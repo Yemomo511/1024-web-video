@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "jol-player": "^4.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "redux": "^4.2.1",
+    "video-react": "^0.16.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
@@ -24,6 +27,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-aliases": "^0.11.3"
   }
 }
