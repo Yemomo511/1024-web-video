@@ -43,6 +43,21 @@
       ],
       "~common/*": [
         "src/common/*"
+      ],
+      "~hooks/*": [
+        "src/hooks/*"
+      ],
+      "~pages/*": [
+        "src/pages/*"
+      ],
+      "~routes/*": [
+        "src/routes/*"
+      ],
+      "~Controler/*": [
+        "src/components/Controler/*"
+      ],
+      "~store/*": [
+        "src/store/*"
       ]
     }
   },

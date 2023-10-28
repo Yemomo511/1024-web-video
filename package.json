@@ -22,7 +22,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.17.0",
     "redux": "^4.2.1",
-    "video-react": "^0.16.0"
+    "video-react": "^0.16.0",
+    "zustand": "^4.4.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

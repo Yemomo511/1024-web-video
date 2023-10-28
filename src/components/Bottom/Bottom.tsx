@@ -6,15 +6,18 @@ import imageUrl from "~/common/image";
 import Icon from "~components/Icon/Icon";
 import { Slider as SliderAntd } from "antd";
 import TextWithSwitch from "~components/TextWithSwitch/TextWithSwitch";
-import { Popover } from "antd";
+import TextMenu from "~components/Controler/TextMenu/TextMenu";
+import useVideoConfig from "~/hooks/useVideoConfig";
+import { useFullScreenStore } from "~/store/store";
+
 
 export default function Bottom({ playerRef }: { playerRef: any }) {
   const [currentTime, setCurrentTime] = useState(0);
   const [volumeMenu, setVolumeMenu] = useState(false);
   const [isPause, setIsPause] = useState(false);
   const volumeRef = useRef<HTMLDivElement>(null);
+  const {setIsFull,isFull} = useFullScreenStore((state) => state);
   const allTimeState = useMemo(() => {
-    console.log(playerRef.current);
     if (playerRef.current) {
       let duration = Math.floor(playerRef.current.video.duration);
       console.log(duration);
@@ -23,6 +26,8 @@ export default function Bottom({ playerRef }: { playerRef: any }) {
       return 0;
     }
   }, [playerRef, playerRef.current]);
+  const {speedConfig,qualityConfig} = useVideoConfig(playerRef)
+  
   //开启监听
   useEffect(() => {
     if (playerRef.current) {
@@ -57,24 +62,24 @@ export default function Bottom({ playerRef }: { playerRef: any }) {
     }
   }, [playerRef]);
   useEffect(() => {
-      if (volumeRef.current){
-        //鼠标进入
-        volumeRef.current.addEventListener("click",()=>{
-          setVolumeMenu((state:boolean)=>{
-            return !state
-          })
-        })
-
-      }
-  },[volumeRef]);
+    if (volumeRef.current) {
+      //鼠标进入
+      volumeRef.current.addEventListener("click", () => {
+        setVolumeMenu((state: boolean) => {
+          return !state;
+        });
+      });
+    }
+  }, [volumeRef]);
 
   //子组件
   const sliderVertical = useMemo(() => {
     return (
-      <div className={css.sliderVerticalBox} 
-      style={{
-        display:volumeMenu?"flex":"none",
-      }}
+      <div
+        className={css.sliderVerticalBox}
+        style={{
+          display: volumeMenu ? "flex" : "none",
+        }}
       >
         <SliderAntd
           className={css.sliderVertical}
@@ -127,19 +132,12 @@ export default function Bottom({ playerRef }: { playerRef: any }) {
           </p>
           <div className={css.volumeBox} ref={volumeRef}>
             {sliderVertical}
-            {/* <Popover 
-            open={volumeMenu} 
-            placement="top"
-            trigger={"click"}
-            content={
-              sliderVertical
-            }
-          
-             > */}
-            <div  style={{
-              width:"30px",
-              height:"30px"
-            }}>
+            <div
+              style={{
+                width: "30px",
+                height: "30px",
+              }}
+            >
               <Icon
                 src={imageUrl.video.volume}
                 onPress={() => {
@@ -149,8 +147,6 @@ export default function Bottom({ playerRef }: { playerRef: any }) {
                 }}
               ></Icon>
             </div>
-
-            {/* </Popover> */}
           </div>
 
           <div className={css.dammuBox}>
@@ -164,9 +160,11 @@ export default function Bottom({ playerRef }: { playerRef: any }) {
         </div>
         <div className={css.control}>
           <TextWithSwitch>自动播放</TextWithSwitch>
-          <p>倍速</p>
-          <p>画质</p>
-          <Icon src={imageUrl.video.FullScreen}></Icon>
+          <TextMenu title="倍数" menuConfig={speedConfig}></TextMenu>
+          <TextMenu title="画质" menuConfig={qualityConfig}></TextMenu>
+          <Icon src={imageUrl.video.FullScreen} onPress={()=>{
+            setIsFull(!isFull)
+          }}></Icon>
         </div>
       </div>
     </div>

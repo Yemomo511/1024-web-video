@@ -5,10 +5,12 @@ import DPlayer from "dplayer"
 import mp4 from "~assets/video/loli.mp4"
 import poster from "~assets/poster/poster.jpg"
 import Buttom from "~components/Bottom/Bottom"
+import { useFullScreenStore } from '~/store/store'
 import { ConfigProvider } from 'antd'
 //得用canvas播放视频
 export default function Video() {
   const playerRef = useRef()
+  const isFull = useFullScreenStore((state)=>state.isFull)
   useEffect(()=>{
     //初始化
     playerRef.current = new DPlayer({
@@ -18,6 +20,9 @@ export default function Video() {
         //视频封面
         pic:poster,
       },
+      playbackSpeed:[
+        1,1.25,1.5,2
+      ],
       preload:"metadata",
       volume:0,
       //支持airplay
@@ -36,13 +41,6 @@ export default function Video() {
           }        
         }
       ],
-      highlight:[
-        {
-          time:20,
-          text:"高潮"
-        }
-      ]
-      
     })
   },[])
   useEffect(()=>{
@@ -53,8 +51,19 @@ export default function Video() {
       })
     }
   },[playerRef])
+  //判断是否需要全屏
+  useEffect(()=>{
+    const component = document.getElementById("playercomponent")
+    if (component){
+      if (isFull){
+        component.requestFullscreen()
+      }else{
+        document.exitFullscreen()
+      }
+    }
+  },[isFull])
   return (
-    <div className={style.allBox}>
+    <div className={style.allBox} id="playercomponent">
       <div className={style.canvasBox}>
         <div id="player" className={style.video}></div>
       </div>
@@ -67,7 +76,6 @@ export default function Video() {
       }}>
          <Buttom playerRef={playerRef}></Buttom>
       </ConfigProvider>
-   
     </div>
   )
 }
