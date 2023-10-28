@@ -1,8 +1,8 @@
 import React, { useCallback, useRef } from 'react'
 import { Slider as SliderAntd } from 'antd'
 import { stringWithTime } from '~/utils/api/common'
-import css from "./index.module.css"
-export default function Slider({
+import "./index.css"
+function Slider({
     changeTime,
     playerRef,
     currentTime,
@@ -12,8 +12,8 @@ export default function Slider({
     playerRef:any,
     currentTime:number,
     allTime:number
-}) {
-  
+}){
+    
     const sliderRef = useRef<any>()
     const notice = useCallback((state?:number|undefined)=>{
         if (state){
@@ -31,6 +31,7 @@ export default function Slider({
     },[playerRef])
   return (
      <SliderAntd
+        className='css-slider-video'
         ref={sliderRef}
         value={currentTime}
         styles={{
@@ -56,3 +57,4 @@ export default function Slider({
         ></SliderAntd> 
   )
 }
+export default React.forwardRef(Slider)

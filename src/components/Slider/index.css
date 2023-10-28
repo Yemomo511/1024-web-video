@@ -1,0 +1,10 @@
+.css-slider-video > .ant-slider-handle::after{
+    content: url("../../assets//icon//slider/bilibili.svg") !important;
+    position: absolute;
+    width: 14px !important;
+    height: 14px !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    top: -5px !important;
+}

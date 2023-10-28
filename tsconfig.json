@@ -29,44 +29,20 @@
       "~components/*": [
         "src/components/*"
       ],
-      "~pages/*": [
-        "src/pages/*"
-      ],
       "~/*": [
         "src/*"
-      ],
-      "~poster/*": [
-        "src/assets/poster/*"
       ],
       "~utils/*": [
         "src/utils/*"
       ],
-      "~api/*": [
-        "src/utils/api/*"
-      ],
-      "~video/*": [
-        "src/utils/video/*"
-      ],
       "~page/*": [
         "src/page/*"
       ],
-      "~Slider/*": [
-        "src/components/Slider/*"
+      "~image/*": [
+        "src/image/*"
       ],
-      "~icon/*": [
-        "src/assets/icon/*"
-      ],
-      "~network/*": [
-        "src/utils/network/*"
-      ],
-      "~Icon/*": [
-        "src/components/Icon/*"
-      ],
-      "~TextWithS/*": [
-        "src/components/TextWithS/*"
-      ],
-      "~TextWithSwitch/*": [
-        "src/components/TextWithSwitch/*"
+      "~common/*": [
+        "src/common/*"
       ]
     }
   },

@@ -73,3 +73,25 @@
 .dammu::placeholder{
     color:white
 }
+
+/*音量滑动*/
+.volumeBox{
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+    height: 30px;
+    justify-content: flex-end;
+    overflow: visible;   
+}
+.slider-vertical-box{
+    border-radius: 5px;
+    padding:10px;
+    justify-content: center;
+    align-items: center;
+    background-color: #363741;
+    z-index:9999;
+}
+.slider-vertical{
+    height: 100px;
+    margin:0;
+}

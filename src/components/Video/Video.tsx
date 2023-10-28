@@ -5,6 +5,7 @@ import DPlayer from "dplayer"
 import mp4 from "~assets/video/loli.mp4"
 import poster from "~assets/poster/poster.jpg"
 import Buttom from "~components/Bottom/Bottom"
+import { ConfigProvider } from 'antd'
 //得用canvas播放视频
 export default function Video() {
   const playerRef = useRef()
@@ -57,7 +58,16 @@ export default function Video() {
       <div className={style.canvasBox}>
         <div id="player" className={style.video}></div>
       </div>
-      <Buttom playerRef={playerRef}></Buttom>
+      <ConfigProvider
+      theme={{
+        token:{
+          colorBgElevated:"#363741",
+          colorText:"white",
+        }
+      }}>
+         <Buttom playerRef={playerRef}></Buttom>
+      </ConfigProvider>
+   
     </div>
   )
 }
