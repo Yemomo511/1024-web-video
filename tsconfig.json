@@ -46,6 +46,27 @@
       ],
       "~video/*": [
         "src/utils/video/*"
+      ],
+      "~page/*": [
+        "src/page/*"
+      ],
+      "~Slider/*": [
+        "src/components/Slider/*"
+      ],
+      "~icon/*": [
+        "src/assets/icon/*"
+      ],
+      "~network/*": [
+        "src/utils/network/*"
+      ],
+      "~Icon/*": [
+        "src/components/Icon/*"
+      ],
+      "~TextWithS/*": [
+        "src/components/TextWithS/*"
+      ],
+      "~TextWithSwitch/*": [
+        "src/components/TextWithSwitch/*"
       ]
     }
   },

@@ -1,5 +1,5 @@
 .css-all-box{
-    position: absolute;
+    position: fixed;
     top:0;
     left:0;
     bottom:0;
@@ -7,13 +7,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
-.video-react-control-bar-auto-hide{
+.dplayer-controller{
     display: none;
 }
-.big-play-button-hide{
-    display: none;
+.ant-slider-handle::after{
+    content: url("./assets/icon/slider/bilibili.svg") !important;
+    position: absolute;
+    width: 14px !important;
+    height: 14px !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    top: -5px !important;
 }
-.video-react-big-play-button-left{
-    display: none;
+.ant-slider-handle:hover{
+    scale: 1.1;
 }
