@@ -8,14 +8,12 @@ interface MyProps {
     onClickMask?: () => void
     children?: ReactNode
     position?: 'bottom' | 'center'
-    zIndex?: string
 }
 const Popup: FC<MyProps> = ({
     visible,
     onClickMask,
     children,
-    position = 'center',
-    zIndex = 'var(--z-popup)'
+    position = 'bottom',
 }) => {
     const [maskVisible, setMaskVisible] = useState<boolean>(visible)
     const maskStyles = useSpring({
@@ -23,6 +21,7 @@ const Popup: FC<MyProps> = ({
         opacity: visible ? 1 : 0,
         onStart: ({ value }) => {
             if (value.opacity < 0.1) { setMaskVisible(true) }
+            
         },
         onRest: ({ value }) => {
             if (value.opacity < 0.1) { setMaskVisible(false) }
@@ -36,34 +35,25 @@ const Popup: FC<MyProps> = ({
             : '',
     })
     return (
-        <div>
+        <>
             <animated.div
                 onClick={() => onClickMask?.()}
-                style={{
-                    ...maskStyles,
-                    zIndex: `calc(${zIndex} - 1)`,
-                    }}
+                style={{ ...maskStyles }}
                 className={css.mask}
             />
             {position === 'bottom'
                 ? (
-                    <animated.div
-                        style={{ ...wrapperStyles, zIndex,}}
-                        className={css.bottomWrapper}
-                    >
+                    <animated.div style={{ ...wrapperStyles}} className={css.bottomWrapper}>
                         {children}
                     </animated.div>
                 )
                 : (
-                    <animated.div
-                        style={{ ...wrapperStyles, zIndex }}
-                        className={css.centerWrapper}    
-                    >
+                    <animated.div style={{ ...wrapperStyles }} className={css.centerWrapper}>
                         {children}
                     </animated.div>
                 )
             }
-        </div>
+        </>
     )
 }
 export default Popup

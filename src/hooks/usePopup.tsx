@@ -15,12 +15,11 @@ const mask = document.getElementById('mask') as HTMLElement
 export const usePopup = ({
     initVisible=false,
     children,
-    position,
-    zIndex
+    position
 }:Options) => {
   const [visible, setVisible] = useState(initVisible)
   const popup = ReactDOM.createPortal(
-    <Popup zIndex={zIndex} visible={visible} position={position}
+    <Popup visible={visible} position={position}
       onClickMask={() => setVisible(false)} >
       {children}
     </Popup>,
