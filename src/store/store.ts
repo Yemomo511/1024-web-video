@@ -4,7 +4,7 @@ interface fullScreenType{
     setIsFull:(isFull:boolean)=>void,
 }
 const useFullScreenStore = create<fullScreenType>((set) => ({
-    isFull:true,
+    isFull:false,
     setIsFull: (isFull:boolean) => set({isFull}),
 }))
 
