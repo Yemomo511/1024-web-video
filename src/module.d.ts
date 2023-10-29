@@ -1,4 +1,5 @@
 declare module "*.mp4"
+declare module "*.riv"
 declare module "video-react"
 declare module "dplayer"
 declare module "react-slider"

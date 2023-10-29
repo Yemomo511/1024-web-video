@@ -1,0 +1,11 @@
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+}
+.likeBox{
+    width: 50px;
+    height: 50px;
+}

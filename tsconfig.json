@@ -58,6 +58,21 @@
       ],
       "~store/*": [
         "src/store/*"
+      ],
+      "~DammuInput/*": [
+        "src/components/DammuInput/*"
+      ],
+      "~sliderOption/*": [
+        "src/components/sliderOption/*"
+      ],
+      "~sliderIcon/*": [
+        "src/components/SliderIcon/*"
+      ],
+      "~SliderIcon/*": [
+        "src/components/SliderIcon/*"
+      ],
+      "~rive/*": [
+        "src/assets/rive/*"
       ]
     }
   },

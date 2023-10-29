@@ -1,0 +1,33 @@
+.dammuBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 5px;
+    padding:0px 5px;
+    border-radius: 7px;
+    box-shadow: 2px 2px 5px rgba(255,255,255,0.1);
+    background-color: hsla(0,0%,100%,.14);
+}
+.dammu{
+    background-color: transparent;
+    border:none;
+    outline: none;
+    /*光标*/
+    color: rgba(255,255,255,0.7);
+}
+.dammu:focus{
+    border: none;
+    outline: none;
+}
+.dammu::placeholder{
+    color:white
+}
+
+/*分割线*/
+.split{
+    font-size: 30px;
+    padding: 0px;
+    margin: 0px;
+    color: rgba(255,255,255,0.4);
+}

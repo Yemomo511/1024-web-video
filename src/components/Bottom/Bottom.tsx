@@ -9,14 +9,15 @@ import TextWithSwitch from "~components/TextWithSwitch/TextWithSwitch";
 import TextMenu from "~components/Controler/TextMenu/TextMenu";
 import useVideoConfig from "~/hooks/useVideoConfig";
 import { useFullScreenStore } from "~/store/store";
-
+import DammuInput from "~components/DammuInput/DammuInput";
+import SliderIcon from "~components/SliderIcon/SliderIcon";
 
 export default function Bottom({ playerRef }: { playerRef: any }) {
   const [currentTime, setCurrentTime] = useState(0);
   const [volumeMenu, setVolumeMenu] = useState(false);
   const [isPause, setIsPause] = useState(false);
   const volumeRef = useRef<HTMLDivElement>(null);
-  const {setIsFull,isFull} = useFullScreenStore((state) => state);
+  const { setIsFull, isFull } = useFullScreenStore((state) => state);
   const allTimeState = useMemo(() => {
     if (playerRef.current) {
       let duration = Math.floor(+playerRef.current.video.duration);
@@ -25,8 +26,8 @@ export default function Bottom({ playerRef }: { playerRef: any }) {
       return 0;
     }
   }, [playerRef, playerRef.current]);
-  const {speedConfig,qualityConfig} = useVideoConfig(playerRef)
-  
+  const { speedConfig, qualityConfig } = useVideoConfig(playerRef);
+
   //开启监听
   useEffect(() => {
     if (playerRef.current) {
@@ -104,6 +105,9 @@ export default function Bottom({ playerRef }: { playerRef: any }) {
 
   return (
     <div className={css.box}>
+      <div className={css.sliderBar}>
+         <SliderIcon></SliderIcon>
+      </div>
       <div className={css.progressBar}>
         <div className={css.sliderBox}>
           <Slider
@@ -147,23 +151,18 @@ export default function Bottom({ playerRef }: { playerRef: any }) {
               ></Icon>
             </div>
           </div>
-
-          <div className={css.dammuBox}>
-            <Icon src={imageUrl.video.dammu} onPress={() => {}}></Icon>
-            <Icon src={imageUrl.video.dammuConfig} onPress={() => {}}></Icon>
-            <p className={css.split}>|</p>
-            <div className={css.dammuInputBox}>
-              <input className={css.dammu} placeholder="发送一个弹幕吧"></input>
-            </div>
-          </div>
+          <DammuInput playerRef={playerRef}></DammuInput>
         </div>
         <div className={css.control}>
           <TextWithSwitch>自动播放</TextWithSwitch>
           <TextMenu title="倍数" menuConfig={speedConfig}></TextMenu>
           <TextMenu title="画质" menuConfig={qualityConfig}></TextMenu>
-          <Icon src={imageUrl.video.FullScreen} onPress={()=>{
-            setIsFull(!isFull)
-          }}></Icon>
+          <Icon
+            src={imageUrl.video.FullScreen}
+            onPress={() => {
+              setIsFull(!isFull);
+            }}
+          ></Icon>
         </div>
       </div>
     </div>

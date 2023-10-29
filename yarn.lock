@@ -634,6 +634,18 @@
   resolved "https://registry.npmmirror.com/@remix-run/router/-/router-1.10.0.tgz#e2170dc2049b06e65bbe883adad0e8ddf8291278"
   integrity sha512-Lm+fYpMfZoEucJ7cMxgt4dYt8jLfbpwRCzAjm9UgSLOkmlqo9gupxt6YX3DY0Fk155NT9l17d/ydi+964uS9Lw==
 
+"@rive-app/canvas@2.7.0":
+  version "2.7.0"
+  resolved "https://registry.npmmirror.com/@rive-app/canvas/-/canvas-2.7.0.tgz#aee1411c73cd3a4cd4f7fa5cf9539a58c477dd4f"
+  integrity sha512-cB+St1q4wtzF09CUlsZXFUMiLIFEKLp4fbgJ87lF7tyZxoZFr3pViuQlEOaLOygwO1FGnbmhk0in5MS0xiLURQ==
+
+"@rive-app/react-canvas@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.npmmirror.com/@rive-app/react-canvas/-/react-canvas-4.5.0.tgz#0a002b1f4e3eff214d9442d6c22b5bce0f722d2e"
+  integrity sha512-jK9od/tO1beCzDZSP6FIZBgjQA6vZ4A456J36q3Rzdv1Y1bPhbEP6rElmT1eAOCHZ6JKV1/9UNoC8IrSvrIYCQ==
+  dependencies:
+    "@rive-app/canvas" "2.7.0"
+
 "@swc/core-darwin-arm64@1.3.95":
   version "1.3.95"
   resolved "https://registry.npmmirror.com/@swc/core-darwin-arm64/-/core-darwin-arm64-1.3.95.tgz#e6b6363fc0a22ee3cd9a63130d2042d5027aae2c"
@@ -2289,6 +2301,11 @@ nanoid@^3.3.6:
   version "3.3.6"
   resolved "https://registry.npmmirror.com/nanoid/-/nanoid-3.3.6.tgz#443380c856d6e9f9824267d960b4236ad583ea4c"
   integrity sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==
+
+nanoid@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.npmmirror.com/nanoid/-/nanoid-5.0.2.tgz#97588ebc70166d0feaf73ccd2799bb4ceaebf692"
+  integrity sha512-2ustYUX1R2rL/Br5B/FMhi8d5/QzvkJ912rBYxskcpu0myTHzSZfTr1LAS2Sm7jxRUObRrSBFoyzwAhL49aVSg==
 
 natural-compare@^1.4.0:
   version "1.4.0"
