@@ -35,12 +35,6 @@
       "~utils/*": [
         "src/utils/*"
       ],
-      "~page/*": [
-        "src/page/*"
-      ],
-      "~image/*": [
-        "src/image/*"
-      ],
       "~common/*": [
         "src/common/*"
       ],
@@ -53,26 +47,17 @@
       "~routes/*": [
         "src/routes/*"
       ],
-      "~Controler/*": [
-        "src/components/Controler/*"
-      ],
       "~store/*": [
         "src/store/*"
       ],
-      "~DammuInput/*": [
-        "src/components/DammuInput/*"
+      "~Header/*": [
+        "src/components/Header/*"
       ],
-      "~sliderOption/*": [
-        "src/components/sliderOption/*"
+      "~Nav/*": [
+        "src/components/Nav/*"
       ],
-      "~sliderIcon/*": [
-        "src/components/SliderIcon/*"
-      ],
-      "~SliderIcon/*": [
-        "src/components/SliderIcon/*"
-      ],
-      "~rive/*": [
-        "src/assets/rive/*"
+      "~NavCard/*": [
+        "src/components/NavCard/*"
       ]
     }
   },

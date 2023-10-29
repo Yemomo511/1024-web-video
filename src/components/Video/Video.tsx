@@ -4,7 +4,7 @@ import FlvJs from "flv.js";
 import DPlayer from "dplayer";
 import mp4 from "~assets/video/loli.mp4";
 import poster from "~assets/poster/poster.jpg";
-import Buttom from "~components/Bottom/Bottom";
+import Buttom from "~components/Video/Bottom/Bottom";
 import { useFullScreenStore } from "~/store/store";
 import { ConfigProvider } from "antd";
 import { nanoid } from "nanoid";

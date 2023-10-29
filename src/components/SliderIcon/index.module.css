@@ -1,11 +1,38 @@
 .box{
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 99;
+    margin-bottom: 30px;
+}
+.avatar{
+    cursor: pointer;
 }
 .likeBox{
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
+    transition: all 0.1s;
+    cursor: pointer;
+}
+.likeBox:hover{
+    transform: scale(1.2);
+}
+.icon-box{
+    width: 30px;
+    height: 30px;
+    transition: all 0.1s;
+    cursor: pointer;
+}
+.other-icon-box{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    column-gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.icon-box:hover{
+    transform: scale(1.2);
 }

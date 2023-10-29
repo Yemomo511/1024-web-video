@@ -11,11 +11,12 @@ import useVideoConfig from "~/hooks/useVideoConfig";
 import { useFullScreenStore } from "~/store/store";
 import DammuInput from "~components/DammuInput/DammuInput";
 import SliderIcon from "~components/SliderIcon/SliderIcon";
+import poster from "~assets/poster/poster.jpg";
 
 export default function Bottom({ playerRef }: { playerRef: any }) {
   const [currentTime, setCurrentTime] = useState(0);
   const [volumeMenu, setVolumeMenu] = useState(false);
-  const [isPause, setIsPause] = useState(false);
+  const [isPause, setIsPause] = useState(true);
   const volumeRef = useRef<HTMLDivElement>(null);
   const { setIsFull, isFull } = useFullScreenStore((state) => state);
   const allTimeState = useMemo(() => {
@@ -52,15 +53,17 @@ export default function Bottom({ playerRef }: { playerRef: any }) {
   useEffect(() => {
     //轮询
     if (playerRef.current) {
+      console.log("inner")
       let duration = Math.floor(playerRef.current.video.currentTime);
       setCurrentTime(duration);
       const timer = setInterval(() => {
         let duration = Math.floor(playerRef.current.video.currentTime);
+        console.log(duration);
         setCurrentTime(duration);
       }, 1000);
       return () => clearInterval(timer);
     }
-  }, [playerRef]);
+  }, [playerRef,isPause]);
   useEffect(() => {
     if (volumeRef.current) {
       //鼠标进入
@@ -106,7 +109,9 @@ export default function Bottom({ playerRef }: { playerRef: any }) {
   return (
     <div className={css.box}>
       <div className={css.sliderBar}>
-         <SliderIcon></SliderIcon>
+         <SliderIcon
+         avatar={poster}
+         username="叶墨沫"></SliderIcon>
       </div>
       <div className={css.progressBar}>
         <div className={css.sliderBox}>
