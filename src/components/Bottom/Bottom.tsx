@@ -19,8 +19,7 @@ export default function Bottom({ playerRef }: { playerRef: any }) {
   const {setIsFull,isFull} = useFullScreenStore((state) => state);
   const allTimeState = useMemo(() => {
     if (playerRef.current) {
-      let duration = Math.floor(playerRef.current.video.duration);
-      console.log(duration);
+      let duration = Math.floor(+playerRef.current.video.duration);
       return duration;
     } else {
       return 0;
