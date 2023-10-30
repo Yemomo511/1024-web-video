@@ -12,7 +12,7 @@ import imageUrl from "~/common/image";
 import likeRiv from "~assets/rive/likd.riv";
 import Icon from "~components/Icon/Icon";
 import { Avatar, Popover } from "antd";
-import { useShowComment } from "~store/showComment.ts";
+import { useShowCommentStore } from "~store/showComment.ts";
 
 export default function SliderIcon({
 username,
@@ -23,7 +23,7 @@ avatar
 }) {
     const [isLiked, setIsLiked] = useState(true);
     const [isPop, setIsPop] = useState(false)
-    const { commentVisible, setCommentVisible } = useShowComment()
+    const { commentVisible, setCommentVisible } = useShowCommentStore()
     const {rive: likeRive, RiveComponent: LikeComponent} = useRive({
         src: likeRiv,
         stateMachines: "State",
