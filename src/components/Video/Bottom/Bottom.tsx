@@ -15,53 +15,66 @@ import SliderIcon from "~components/SliderIcon/SliderIcon";
 import poster from "~assets/poster/poster.jpg";
 
 //playerRef 为 Ref current为Dplayer实例，
-export default function Bottom({ playerRef }: { playerRef:  React.MutableRefObject<DPlayer> }) {
+export default function Bottom({ playerRef }: { playerRef: DPlayer | null}) {
   const [currentTime, setCurrentTime] = useState(0);
   const [volumeMenu, setVolumeMenu] = useState(false);
   const [isPause, setIsPause] = useState(true);
   const volumeRef = useRef<HTMLDivElement>(null);
   const { setIsFull, isFull } = useFullScreenStore((state) => state);
+  useEffect(() => {
+    if (playerRef){
+      playerRef.video.muted = true;
+      playerRef.video.muted = false
+    }
+  }, [playerRef]);
+
   const allTimeState = useMemo(() => {
-    if (playerRef.current) {
-      let duration = Math.floor(+playerRef.current.video.duration);
+  
+    if (playerRef) {
+      if (Number.isNaN(playerRef.video.duration)){
+        return 0;
+      }
+      let duration = Math.floor(+playerRef.video.duration);
       return duration;
     } else {
       return 0;
     }
-  }, [playerRef, playerRef.current]);
+  }, [playerRef,isPause]);
   const { speedConfig, qualityConfig } = useVideoConfig(playerRef);
 
   //开启监听
   useEffect(() => {
-    if (playerRef.current) {
-      playerRef.current.on(DPlayerEvents.play, () => {
+    if (playerRef) {
+      console.log(playerRef)
+      playerRef.on("play", () => {
         setIsPause(false);
       });
-      playerRef.current.on(DPlayerEvents.pause, () => {
+      playerRef.on("pause", () => {
         setIsPause(true);
       });
     }
-  }, [playerRef.current]);
+  }, [playerRef]);
   useEffect(() => {
-    if (playerRef.current) {
+    if (playerRef) {
       if (isPause) {
-        playerRef.current.pause();
+        playerRef.pause();
       } else {
-        playerRef.current.play();
+        playerRef.play();
       }
     }
-  }, [isPause, playerRef.current]);
+  }, [isPause, playerRef]);
 
   useEffect(() => {
     //轮询
-    if (playerRef.current) {
-      console.log("inner")
-      let duration = Math.floor(playerRef.current.video.currentTime);
+    if (playerRef) {
+      let duration = Math.floor(playerRef.video.currentTime);
       setCurrentTime(duration);
       const timer = setInterval(() => {
-        let duration = Math.floor(playerRef.current.video.currentTime);
-        console.log(duration);
-        setCurrentTime(duration);
+        if (playerRef) {
+          let duration = Math.floor(playerRef.video.currentTime);
+          console.log(duration);
+          setCurrentTime(duration);
+        }
       }, 1000);
       return () => clearInterval(timer);
     }
@@ -99,8 +112,8 @@ export default function Bottom({ playerRef }: { playerRef:  React.MutableRefObje
           step={0.01}
           vertical
           onChange={(state: number) => {
-            if (playerRef.current) {
-              playerRef.current.video.volume = state;
+            if (playerRef) {
+              playerRef.video.volume = state;
             }
           }}
         ></SliderAntd>

@@ -1,6 +1,7 @@
 import React, { useCallback, useRef } from 'react'
 import { Slider as SliderAntd } from 'antd'
 import { stringWithTime } from '~/utils/api/common'
+import DPlayer from 'dplayer'
 import "./index.css"
 function Slider({
     changeTime,
@@ -9,7 +10,7 @@ function Slider({
     allTime,
 }:{
     changeTime:(time:number)=>void,
-    playerRef:any,
+    playerRef: DPlayer,
     currentTime:number,
     allTime:number
 }){
@@ -25,8 +26,8 @@ function Slider({
     },[])
     const handleChange = useCallback((state:number)=>{
         changeTime(state)
-        if (playerRef.current){
-            playerRef.current.video.currentTime = state
+        if (playerRef){
+            playerRef.video.currentTime = state
         }
     },[playerRef])
   return (

@@ -8,10 +8,10 @@ export default function DammuInput({playerRef}:{
     const inputRef = useRef<HTMLInputElement>(null)
     //开始时监听
     useEffect(()=>{
-        if(inputRef.current && playerRef.current){
+        if(inputRef.current && playerRef){
             window.addEventListener("keydown",(e)=>{
                 if(e.keyCode === 13 && inputRef.current){
-                    playerRef.current.danmaku.draw({
+                    playerRef.danmaku.draw({
                         text:inputRef.current.value,
                         //随机颜色
                         color: Math.floor(Math.random() * 16777215).toString(16),

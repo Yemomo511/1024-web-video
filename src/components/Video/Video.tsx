@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from "react";
+import React, { useEffect, useMemo, useReducer, useRef, useState } from "react";
 import style from "./index.module.css";
 import FlvJs from "flv.js";
 import DPlayer from "dplayer";
@@ -11,8 +11,16 @@ import { nanoid } from "nanoid";
 import SliderIcon from "~components/SliderIcon/SliderIcon";
 //得用canvas播放视频
 export default function Video() {
-  const playerRef = useRef<DPlayer>(
-    new DPlayer({
+  const [playerRef,setPlayerRef] = useState<DPlayer | null>(()=>{
+    return null
+  })
+  
+  const maskRef = useRef<HTMLDivElement>(null)
+  const playerBoxRef = useRef<HTMLDivElement>(null)
+  const isFull = useFullScreenStore((state) => state.isFull);
+  useEffect(() => {
+    //开启一系列事件监听
+    setPlayerRef(new DPlayer({
       container: document.getElementById("player"),
       video: {
         url: mp4,
@@ -35,18 +43,11 @@ export default function Video() {
         },
       ],
       danmaku: {
-        id: "1",
-        api: "",
+        id:"1",
+        api:""
       },
-    })
-  );
-  const isFull = useFullScreenStore((state) => state.isFull);
-  useEffect(() => {
-    //初始化
+    }))
   }, []);
-  useEffect(() => {
-    //开启一系列事件监听
-  }, [playerRef]);
   //判断是否需要全屏
   useEffect(() => {
     const component = document.getElementById("playercomponent");
@@ -61,18 +62,25 @@ export default function Video() {
   return (
     <div className={style.allBox} id="playercomponent">
       <div className={style.canvasBox}>
-        <div id="player" className={style.video}></div>
+        <div id="player" className={style.video} ref={
+          playerBoxRef
+        }>
+
+        </div>
       </div>
-      <ConfigProvider
-        theme={{
-          token: {
-            colorBgElevated: "#363741",
-            colorText: "white",
-          },
-        }}
-      >
-        <Buttom playerRef={playerRef}></Buttom>
-      </ConfigProvider>
+      <div className={style.mask} id="playermask" ref={maskRef}>
+        <ConfigProvider
+            theme={{
+              token: {
+                colorBgElevated: "#363741",
+                colorText: "white",
+              },
+            }}
+          >
+            <Buttom playerRef={playerRef}></Buttom>
+        </ConfigProvider>
+      </div>
+     
     </div>
   );
 }
