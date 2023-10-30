@@ -27,6 +27,7 @@ export default function Video({
   const maskRef = useRef<HTMLDivElement>(null)
   const playerBoxRef = useRef<HTMLDivElement>(null)
   const isFull = useFullScreenStore((state) => state.isFull);
+  const bottomRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     //开启一系列事件监听
     setPlayerRef(new DPlayer({
@@ -68,8 +69,44 @@ export default function Video({
       }
     }
   }, [isFull]);
+  const timer = useRef<number|null>(null)
+  //监听设置底部状态栏的显示
+  useEffect(()=>{
+    if (playerBoxRef.current && bottomRef.current){
+      playerBoxRef.current.addEventListener("mousemove",()=>{
+        if (timer.current){
+          clearTimeout(timer.current)
+        }
+        if (bottomRef.current){
+          bottomRef.current.style.opacity = "1"
+        }
+        timer.current = setTimeout(()=>{
+          if (bottomRef.current){
+            bottomRef.current.style.opacity = "0"
+          }
+        },4000)
+      })
+      //优先级更高一筹
+      bottomRef.current.addEventListener("mousemove",()=>{
+        if (timer.current){
+          clearTimeout(timer.current)
+        }
+        if (bottomRef.current){
+          bottomRef.current.style.opacity = "1"
+        }
+      })
+      bottomRef.current.addEventListener("mouseleave",()=>{
+        timer.current = setTimeout(()=>{
+          if (bottomRef.current){
+            bottomRef.current.style.opacity = "0"
+          }
+        },4000)
+      })
+    }
+  },[playerBoxRef])
   return (
-    <div className={style.allBox} id={`playercomponent-${videoData.id}`}>
+    //设置allBox类和.dplayer-controller类
+    <div className={[style.allBox,"deplayer-controller"].join(" ")} id={`playercomponent-${videoData.id}`}>
       <div className={style.canvasBox}>
         <div id={`player-${videoData.id}`} className={style.video} ref={
           playerBoxRef
@@ -86,7 +123,7 @@ export default function Video({
               },
             }}
           >
-            <Buttom playerRef={playerRef}></Buttom>
+            <Buttom playerRef={playerRef} ref={bottomRef} ></Buttom>
         </ConfigProvider>
       </div>
      

@@ -80,3 +80,12 @@
 .slider-bar{
     align-self: flex-end;
 }
+
+/*底部*/
+.bottom-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+}

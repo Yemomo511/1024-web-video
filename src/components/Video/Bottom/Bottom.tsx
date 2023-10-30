@@ -1,11 +1,11 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 import css from "./index.module.css";
-import DPlayer ,{DPlayerEvents}from "dplayer";
+import DPlayer, { DPlayerEvents } from "dplayer";
 import Slider from "~components/Slider/Slider";
 import { stringWithTime } from "~/utils/api/common";
 import imageUrl from "~/common/image";
 import Icon from "~components/Icon/Icon";
-import { Slider as SliderAntd } from "antd";
+import { Popover, Slider as SliderAntd } from "antd";
 import TextWithSwitch from "~components/TextWithSwitch/TextWithSwitch";
 import TextMenu from "~components/Controler/TextMenu/TextMenu";
 import useVideoConfig from "~/hooks/useVideoConfig";
@@ -15,23 +15,22 @@ import SliderIcon from "~components/SliderIcon/SliderIcon";
 import poster from "~assets/poster/poster.jpg";
 
 //playerRef 为 Ref current为Dplayer实例，
-export default function Bottom({ playerRef }: { playerRef: DPlayer | null}) {
+const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | null },ref:any) {
   const [currentTime, setCurrentTime] = useState(0);
   const [volumeMenu, setVolumeMenu] = useState(false);
   const [isPause, setIsPause] = useState(true);
   const volumeRef = useRef<HTMLDivElement>(null);
   const { setIsFull, isFull } = useFullScreenStore((state) => state);
   useEffect(() => {
-    if (playerRef){
+    if (playerRef) {
       playerRef.video.muted = true;
-      playerRef.video.muted = false
+      playerRef.video.muted = false;
     }
   }, [playerRef]);
 
   const allTimeState = useMemo(() => {
-  
     if (playerRef) {
-      if (Number.isNaN(playerRef.video.duration)){
+      if (Number.isNaN(playerRef.video.duration)) {
         return 0;
       }
       let duration = Math.floor(+playerRef.video.duration);
@@ -39,13 +38,13 @@ export default function Bottom({ playerRef }: { playerRef: DPlayer | null}) {
     } else {
       return 0;
     }
-  }, [playerRef,isPause]);
+  }, [playerRef, isPause]);
   const { speedConfig, qualityConfig } = useVideoConfig(playerRef);
   let timer: number;
   //开启监听
   useEffect(() => {
     if (playerRef) {
-      console.log(playerRef)
+      console.log(playerRef);
       //忽视错误 ts注释存在问题 考虑后续打个patch
       // @ts-ignore
       playerRef.on("play", () => {
@@ -79,19 +78,10 @@ export default function Bottom({ playerRef }: { playerRef: DPlayer | null}) {
     //轮询
     if (playerRef) {
       let duration = Math.floor(playerRef.video.currentTime);
-      setCurrentTime(duration)
+      setCurrentTime(duration);
     }
-  }, [playerRef,isPause]);
-  useEffect(() => {
-    if (volumeRef.current) {
-      //鼠标进入
-      volumeRef.current.addEventListener("click", () => {
-        setVolumeMenu((state: boolean) => {
-          return !state;
-        });
-      });
-    }
-  }, [volumeRef]);
+  }, [playerRef, isPause]);
+
 
   //子组件
   const sliderVertical = useMemo(() => {
@@ -99,7 +89,7 @@ export default function Bottom({ playerRef }: { playerRef: DPlayer | null}) {
       <div
         className={css.sliderVerticalBox}
         style={{
-          display: volumeMenu ? "flex" : "none",
+          display: "flex" ,
         }}
       >
         <SliderAntd
@@ -127,10 +117,9 @@ export default function Bottom({ playerRef }: { playerRef: DPlayer | null}) {
   return (
     <div className={css.box}>
       <div className={css.sliderBar}>
-         <SliderIcon
-         avatar={poster}
-         username="叶墨沫"></SliderIcon>
+        <SliderIcon avatar={poster} username="叶墨沫"></SliderIcon>
       </div>
+      <div className={css.bottomBox} ref={ref}>
       <div className={css.progressBar}>
         <div className={css.sliderBox}>
           <Slider
@@ -157,22 +146,25 @@ export default function Bottom({ playerRef }: { playerRef: DPlayer | null}) {
             {stringWithTime(currentTime)}/{stringWithTime(allTimeState)}
           </p>
           <div className={css.volumeBox} ref={volumeRef}>
-            {sliderVertical}
-            <div
-              style={{
-                width: "30px",
-                height: "30px",
-              }}
-            >
-              <Icon
-                src={imageUrl.video.volume}
-                onPress={() => {
-                  setVolumeMenu((state: boolean) => {
-                    return !state;
-                  });
+            <Popover 
+            open={volumeMenu}
+            content={sliderVertical}>
+              <div
+                style={{
+                  width: "30px",
+                  height: "30px",
                 }}
-              ></Icon>
-            </div>
+              >
+                <Icon
+                  src={imageUrl.video.volume}
+                  onPress={() => {
+                    setVolumeMenu(() => {
+                      return !volumeMenu;
+                    });
+                  }}
+                ></Icon>
+              </div>
+            </Popover>
           </div>
           <DammuInput playerRef={playerRef}></DammuInput>
         </div>
@@ -188,6 +180,8 @@ export default function Bottom({ playerRef }: { playerRef: DPlayer | null}) {
           ></Icon>
         </div>
       </div>
+      </div>
     </div>
   );
-}
+})
+export default Bottom

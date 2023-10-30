@@ -12,6 +12,7 @@ import {
 } from "@react-spring/web";
 import { videoType } from "~/common/type";
 import mp4 from "~assets/video/loli.mp4";
+import musicMp4 from "~assets/video/music.mp4"
 import poster from "~assets/poster/poster.jpg";
 import poster2 from "~assets/poster/poster2.jpeg";
 import { nanoid } from "nanoid";
@@ -31,7 +32,7 @@ const videoData: videoType[] = [
   {
     id: nanoid(),
     poster: poster2,
-    url: mp4,
+    url: musicMp4,
     name: "萝莉www",
     userId: "1",
     stared: 12,
@@ -51,7 +52,7 @@ const videoData: videoType[] = [
   {
     id: nanoid(),
     poster: poster2,
-    url: mp4,
+    url: musicMp4,
     name: "萝莉www",
     userId: "1",
     stared: 12,
