@@ -14,7 +14,7 @@ interface MyProps extends HTMLAttributes<HTMLElement> {
   icon: string;
   title: string;
 }
-const NavCard: FC<MyProps> = memo((props) => {
+const IconCard: FC<MyProps> = memo((props) => {
   const { icon, title } = props;
   const boxRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
@@ -57,4 +57,4 @@ const NavCard: FC<MyProps> = memo((props) => {
     </div>
   );
 });
-export default NavCard;
+export default IconCard;

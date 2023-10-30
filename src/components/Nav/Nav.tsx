@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./index.module.css";
-import NavCard from "~components/NavCard/NavCard";
+import NavCard from "~components/IconCard/IconCard";
 import imageUrl from "~/common/image";
 const navList = [
     {

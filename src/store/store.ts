@@ -1,11 +1,13 @@
 import {create} from "zustand"
+import { stateFactory } from "./factory"
 interface fullScreenType{
     isFull:boolean,
     setIsFull:(isFull:boolean)=>void,
 }
-const useFullScreenStore = create<fullScreenType>((set) => ({
-    isFull:false,
-    setIsFull: (isFull:boolean) => set({isFull}),
+const useFullScreenStore = stateFactory({
+    isFull:false
+},(set)=>({
+    setIsFull:(isFull:boolean)=>set({isFull})
 }))
 
 export {useFullScreenStore}

@@ -50,14 +50,11 @@
       "~store/*": [
         "src/store/*"
       ],
-      "~Header/*": [
-        "src/components/Header/*"
+      "~header/*": [
+        "src/assets/header/*"
       ],
-      "~Nav/*": [
-        "src/components/Nav/*"
-      ],
-      "~NavCard/*": [
-        "src/components/NavCard/*"
+      "~IconCard/*": [
+        "src/components/IconCard/*"
       ]
     }
   },

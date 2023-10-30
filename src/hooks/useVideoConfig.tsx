@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import DPlayer from "dplayer";
-export default function useVideoConfig( playerRef : DPlayer) {
+export default function useVideoConfig( playerRef : DPlayer|null) {
   const speedConfig = useMemo(() => {
     return [
       {

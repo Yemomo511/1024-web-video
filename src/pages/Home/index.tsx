@@ -17,7 +17,6 @@ const Home: FC<MyProps> = memo(function Home(prop) {
         <div className={css.nav}>
             <Nav></Nav>
         </div>
-       
         <div className={css.video}>
           <Video></Video>
         </div>

@@ -10,7 +10,7 @@ function Slider({
     allTime,
 }:{
     changeTime:(time:number)=>void,
-    playerRef: DPlayer,
+    playerRef: DPlayer|null,
     currentTime:number,
     allTime:number
 }){

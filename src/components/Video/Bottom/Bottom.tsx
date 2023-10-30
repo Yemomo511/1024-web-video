@@ -46,9 +46,12 @@ export default function Bottom({ playerRef }: { playerRef: DPlayer | null}) {
   useEffect(() => {
     if (playerRef) {
       console.log(playerRef)
+      //忽视错误 ts注释存在问题 考虑后续打个patch
+      // @ts-ignore
       playerRef.on("play", () => {
         setIsPause(false);
       });
+      // @ts-ignore
       playerRef.on("pause", () => {
         setIsPause(true);
       });
