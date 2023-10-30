@@ -38,6 +38,7 @@ export default function Video({
         pic: videoData.poster,
       },
       playbackSpeed: [1, 1.25, 1.5, 2],
+      autoplay:true,
       preload: "metadata",
       volume: 0.7,
       //支持airplay
@@ -121,6 +122,11 @@ export default function Video({
                 colorBgElevated: "#363741",
                 colorText: "white",
               },
+              components:{
+                Tooltip:{
+                  colorBgSpotlight:"#363741",
+                }
+              }
             }}
           >
             <Buttom playerRef={playerRef} ref={bottomRef} ></Buttom>

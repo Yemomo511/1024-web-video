@@ -5,7 +5,7 @@ import Slider from "~components/Slider/Slider";
 import { stringWithTime } from "~/utils/api/common";
 import imageUrl from "~/common/image";
 import Icon from "~components/Icon/Icon";
-import { Popover, Slider as SliderAntd } from "antd";
+import { Popover, Slider as SliderAntd, Tooltip } from "antd";
 import TextWithSwitch from "~components/TextWithSwitch/TextWithSwitch";
 import TextMenu from "~components/Controler/TextMenu/TextMenu";
 import useVideoConfig from "~/hooks/useVideoConfig";
@@ -17,7 +17,6 @@ import poster from "~assets/poster/poster.jpg";
 //playerRef 为 Ref current为Dplayer实例，
 const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | null },ref:any) {
   const [currentTime, setCurrentTime] = useState(0);
-  const [volumeMenu, setVolumeMenu] = useState(false);
   const [isPause, setIsPause] = useState(true);
   const volumeRef = useRef<HTMLDivElement>(null);
   const { setIsFull, isFull } = useFullScreenStore((state) => state);
@@ -112,7 +111,7 @@ const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | 
         ></SliderAntd>
       </div>
     );
-  }, [volumeMenu]);
+  }, []);
 
   return (
     <div className={css.box}>
@@ -146,9 +145,9 @@ const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | 
             {stringWithTime(currentTime)}/{stringWithTime(allTimeState)}
           </p>
           <div className={css.volumeBox} ref={volumeRef}>
-            <Popover 
-            open={volumeMenu}
-            content={sliderVertical}>
+            <Tooltip
+            placement="top"
+            title={sliderVertical}>
               <div
                 style={{
                   width: "30px",
@@ -157,14 +156,9 @@ const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | 
               >
                 <Icon
                   src={imageUrl.video.volume}
-                  onPress={() => {
-                    setVolumeMenu(() => {
-                      return !volumeMenu;
-                    });
-                  }}
                 ></Icon>
               </div>
-            </Popover>
+            </Tooltip>
           </div>
           <DammuInput playerRef={playerRef}></DammuInput>
         </div>
