@@ -11,11 +11,8 @@ import { nanoid } from "nanoid";
 import SliderIcon from "~components/SliderIcon/SliderIcon";
 //得用canvas播放视频
 export default function Video() {
-  const playerRef = useRef();
-  const isFull = useFullScreenStore((state) => state.isFull);
-  useEffect(() => {
-    //初始化
-    playerRef.current = new DPlayer({
+  const playerRef = useRef<DPlayer>(
+    new DPlayer({
       container: document.getElementById("player"),
       video: {
         url: mp4,
@@ -37,16 +34,18 @@ export default function Video() {
           click: () => {},
         },
       ],
-      danmaku: {},
-    });
+      danmaku: {
+        id: "1",
+        api: "",
+      },
+    })
+  );
+  const isFull = useFullScreenStore((state) => state.isFull);
+  useEffect(() => {
+    //初始化
   }, []);
   useEffect(() => {
     //开启一系列事件监听
-    if (playerRef.current) {
-      playerRef.current.on("progress", () => {
-        console.log("change");
-      });
-    }
   }, [playerRef]);
   //判断是否需要全屏
   useEffect(() => {

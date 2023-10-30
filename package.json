@@ -15,6 +15,7 @@
     "@mui/material": "^5.14.15",
     "@react-spring/web": "^9.7.3",
     "@rive-app/react-canvas": "^4.5.0",
+    "@types/dplayer": "^1.25.4",
     "antd": "^5.10.2",
     "dplayer": "^1.27.1",
     "flv.js": "^1.6.2",

@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import css from "./index.module.css";
+import DPlayer ,{DPlayerEvents}from "dplayer";
 import Slider from "~components/Slider/Slider";
 import { stringWithTime } from "~/utils/api/common";
 import imageUrl from "~/common/image";
@@ -13,7 +14,8 @@ import DammuInput from "~components/DammuInput/DammuInput";
 import SliderIcon from "~components/SliderIcon/SliderIcon";
 import poster from "~assets/poster/poster.jpg";
 
-export default function Bottom({ playerRef }: { playerRef: any }) {
+//playerRef 为 Ref current为Dplayer实例，
+export default function Bottom({ playerRef }: { playerRef:  React.MutableRefObject<DPlayer> }) {
   const [currentTime, setCurrentTime] = useState(0);
   const [volumeMenu, setVolumeMenu] = useState(false);
   const [isPause, setIsPause] = useState(true);
@@ -32,10 +34,10 @@ export default function Bottom({ playerRef }: { playerRef: any }) {
   //开启监听
   useEffect(() => {
     if (playerRef.current) {
-      playerRef.current.on("play", () => {
+      playerRef.current.on(DPlayerEvents.play, () => {
         setIsPause(false);
       });
-      playerRef.current.on("pause", () => {
+      playerRef.current.on(DPlayerEvents.pause, () => {
         setIsPause(true);
       });
     }
