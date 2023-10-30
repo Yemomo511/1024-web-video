@@ -1,4 +1,3 @@
-
 export interface commentType{
     id:string,
     userId:string,
@@ -22,6 +21,12 @@ export interface userType{
     starVideo:videoType[],
     likeVideo:videoType[],
 }
+
+/*model类型*/
+export enum modelType{
+    DEFAULT = "default",
+    UPLOAD = "upload",
+} 
 
 //定义module暴露
 declare module '@type/videoData'{

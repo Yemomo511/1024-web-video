@@ -16,7 +16,6 @@ import musicMp4 from "~assets/video/music.mp4"
 import poster from "~assets/poster/poster.jpg";
 import poster2 from "~assets/poster/poster2.jpeg";
 import { nanoid } from "nanoid";
-import { useVideoIndexStore } from "~/store/store";
 
 const videoData: videoType[] = [
   {

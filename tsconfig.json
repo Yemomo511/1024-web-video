@@ -55,6 +55,9 @@
       ],
       "~IconCard/*": [
         "src/components/IconCard/*"
+      ],
+      "~PassVideo/*": [
+        "src/components/PassVideo/*"
       ]
     }
   },

@@ -8,9 +8,7 @@ import Buttom from "~components/Video/Bottom/Bottom";
 import { useFullScreenStore } from "~/store/store";
 import { ConfigProvider } from "antd";
 import { videoType } from "~/common/type";
-import { nanoid } from "nanoid";
-import SliderIcon from "~components/SliderIcon/SliderIcon";
-
+import { useModelStore } from "~/store/store";
 //定义渲染模式
 
 
@@ -20,10 +18,10 @@ export default function Video({
 }:{
   videoData:videoType
 }) {
+  
   const [playerRef,setPlayerRef] = useState<DPlayer | null>(()=>{
     return null
   })
-  
   const maskRef = useRef<HTMLDivElement>(null)
   const playerBoxRef = useRef<HTMLDivElement>(null)
   const isFull = useFullScreenStore((state) => state.isFull);
@@ -112,7 +110,6 @@ export default function Video({
         <div id={`player-${videoData.id}`} className={style.video} ref={
           playerBoxRef
         }>
-
         </div>
       </div>
       <div className={style.mask} id="playermask" ref={maskRef}>
@@ -132,7 +129,6 @@ export default function Video({
             <Buttom playerRef={playerRef} ref={bottomRef} ></Buttom>
         </ConfigProvider>
       </div>
-     
     </div>
   );
 }

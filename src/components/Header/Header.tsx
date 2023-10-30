@@ -5,24 +5,13 @@ import Input, { InputProps, InputRef } from "antd/es/input/Input";
 import ConfigProvider from "antd/es/config-provider";
 import Icon from "~components/Icon/Icon";
 import IconCard from "~components/IconCard/IconCard";
-import poster from "~assets/poster/poster.jpg"
+import poster from "~assets/poster/poster.jpg";
 import { Avatar } from "antd";
-const optionList = [
-  {
-    title: "更多",
-    icon: imageUrl.header.list,
-  },
-  {
-    title: "通知",
-    icon: imageUrl.header.notice,
-  },
-  {
-    title: "投稿",
-    icon: imageUrl.header.passVideo,
-  },
-];
+import { useModelStore,modelType } from "~/store/store";
+
 export default function Header() {
   const inputRef = useRef<InputRef>(null);
+  const setModel = useModelStore(state=>state.setModel)
   const SearchIcon = useCallback((onClick: () => void) => {
     return (
       <button className={css.iconBox} onClick={onClick}>
@@ -63,17 +52,27 @@ export default function Header() {
   const optionListComponent = useMemo(() => {
     return (
       <div className={css.optionBox}>
-        {optionList.map((item, index) => {
-          return (
-            <div className={css.optionIconBox}>
-              <IconCard title={item.title} icon={item.icon}></IconCard>
-            </div>
-          );
-        })}
-        <Avatar src={poster} style={{
-          width:40,
-          height:40
-        }}></Avatar>
+        <div className={css.optionIconBox}>
+          <IconCard title={"更多"} icon={imageUrl.header.list}></IconCard>
+        </div>
+        <div className={css.optionIconBox}>
+          <IconCard title={"消息"} icon={imageUrl.header.notice}></IconCard>
+        </div>
+        <div className={css.optionIconBox}
+        onClick={()=>{
+          setModel(modelType.UPLOAD)
+        }}>
+          <IconCard title={"投稿"} icon={imageUrl.header.passVideo}
+          ></IconCard>
+        </div>
+
+        <Avatar
+          src={poster}
+          style={{
+            width: 40,
+            height: 40,
+          }}
+        ></Avatar>
       </div>
     );
   }, []);
@@ -83,7 +82,7 @@ export default function Header() {
         <img src={imageUrl.logo} className={css.logo}></img>
         <div className={css.logoText}>生菜视频</div>
       </div>
-     
+
       {Search}
       {optionListComponent}
     </div>
