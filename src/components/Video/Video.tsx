@@ -7,10 +7,19 @@ import poster from "~assets/poster/poster.jpg";
 import Buttom from "~components/Video/Bottom/Bottom";
 import { useFullScreenStore } from "~/store/store";
 import { ConfigProvider } from "antd";
+import { videoType } from "~/common/type";
 import { nanoid } from "nanoid";
 import SliderIcon from "~components/SliderIcon/SliderIcon";
+
+//定义渲染模式
+
+
 //得用canvas播放视频
-export default function Video() {
+export default function Video({
+  videoData
+}:{
+  videoData:videoType
+}) {
   const [playerRef,setPlayerRef] = useState<DPlayer | null>(()=>{
     return null
   })
@@ -21,15 +30,15 @@ export default function Video() {
   useEffect(() => {
     //开启一系列事件监听
     setPlayerRef(new DPlayer({
-      container: document.getElementById("player"),
+      container: document.getElementById(`player-${videoData.id}`),
       video: {
-        url: mp4,
+        url: videoData.url,
         //视频封面
-        pic: poster,
+        pic: videoData.poster,
       },
       playbackSpeed: [1, 1.25, 1.5, 2],
       preload: "metadata",
-      volume: 0,
+      volume: 0.7,
       //支持airplay
       airplay: true,
       contextmenu: [
@@ -60,9 +69,9 @@ export default function Video() {
     }
   }, [isFull]);
   return (
-    <div className={style.allBox} id="playercomponent">
+    <div className={style.allBox} id={`playercomponent-${videoData.id}`}>
       <div className={style.canvasBox}>
-        <div id="player" className={style.video} ref={
+        <div id={`player-${videoData.id}`} className={style.video} ref={
           playerBoxRef
         }>
 

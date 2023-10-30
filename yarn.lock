@@ -621,7 +621,7 @@
 
 "@react-spring/web@^9.7.3":
   version "9.7.3"
-  resolved "https://registry.npmmirror.com/@react-spring/web/-/web-9.7.3.tgz"
+  resolved "https://registry.npmmirror.com/@react-spring/web/-/web-9.7.3.tgz#d9f4e17fec259f1d65495a19502ada4f5b57fa3d"
   integrity sha512-BXt6BpS9aJL/QdVqEIX9YoUy8CE6TJrU0mNCqSoxdXlIeNcEBWOfIyE6B14ENNsyQKS3wOWkiJfco0tCr/9tUg==
   dependencies:
     "@react-spring/animated" "~9.7.3"

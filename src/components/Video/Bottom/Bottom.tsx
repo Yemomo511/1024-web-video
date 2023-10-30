@@ -41,7 +41,7 @@ export default function Bottom({ playerRef }: { playerRef: DPlayer | null}) {
     }
   }, [playerRef,isPause]);
   const { speedConfig, qualityConfig } = useVideoConfig(playerRef);
-
+  let timer: number;
   //开启监听
   useEffect(() => {
     if (playerRef) {
@@ -50,10 +50,18 @@ export default function Bottom({ playerRef }: { playerRef: DPlayer | null}) {
       // @ts-ignore
       playerRef.on("play", () => {
         setIsPause(false);
+        timer = setInterval(() => {
+          if (playerRef) {
+            let duration = Math.floor(playerRef.video.currentTime);
+            console.log(duration);
+            setCurrentTime(duration);
+          }
+        }, 1000);
       });
       // @ts-ignore
       playerRef.on("pause", () => {
         setIsPause(true);
+        clearInterval(timer);
       });
     }
   }, [playerRef]);
@@ -71,15 +79,7 @@ export default function Bottom({ playerRef }: { playerRef: DPlayer | null}) {
     //轮询
     if (playerRef) {
       let duration = Math.floor(playerRef.video.currentTime);
-      setCurrentTime(duration);
-      const timer = setInterval(() => {
-        if (playerRef) {
-          let duration = Math.floor(playerRef.video.currentTime);
-          console.log(duration);
-          setCurrentTime(duration);
-        }
-      }, 1000);
-      return () => clearInterval(timer);
+      setCurrentTime(duration)
     }
   }, [playerRef,isPause]);
   useEffect(() => {

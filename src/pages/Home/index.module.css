@@ -27,9 +27,22 @@
 }
 
 .video{
+    position: relative;
     height: calc(100vh - 70px);
     border-radius: 30px;
     overflow: hidden;
     min-width: 300px;
     flex:1 1 0%;
+}
+.transBox{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.transCard{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
 }
