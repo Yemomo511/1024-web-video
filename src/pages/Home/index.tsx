@@ -131,16 +131,23 @@ const Home: FC<MyProps> = function Home() {
       };
       upState()
   }, [index, videoData]);
+  let timer = useRef<number | null>(null);
   useEffect(() => {
-    let lastScrollTime = true;
     if (videoBoxRef.current) {
       videoBoxRef.current.addEventListener("wheel", (e) => {
-          if (e.deltaY > 40) {
+        if (timer.current) {
+          clearTimeout(timer.current);
+        }
+        timer.current = setTimeout(() => {
+          console.log("inner")
+          if (e.deltaY > 0) {
             console.log("inner")
             turnUpVideo();
-          } else if (e.deltaY < -40) {
+          } else if (e.deltaY < -0) {
             turnDownVideo();
           }
+        }, 100);
+         
       });
     }
   },[]);
