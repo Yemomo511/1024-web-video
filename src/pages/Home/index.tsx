@@ -9,7 +9,6 @@ import {
   animated,
   useSpringRef,
   useTransition,
-  useSpring,
 } from "@react-spring/web";
 import { videoType } from "~/common/type";
 import mp4 from "~assets/video/loli.mp4";
@@ -17,7 +16,8 @@ import musicMp4 from "~assets/video/music.mp4"
 import poster from "~assets/poster/poster.jpg";
 import poster2 from "~assets/poster/poster2.jpeg";
 import { nanoid } from "nanoid";
-import { useShowComment } from "~store/showComment.ts";
+import { useShowCommentStore } from "~store/showComment.ts";
+import Comment from "~components/Comment";
 
 const videoData: videoType[] = [
   {
@@ -88,11 +88,9 @@ const Home: FC<MyProps> = function Home() {
   const videoBoxRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState<number>(0);
   const [direct, setDirect] = useState(true);
-  const { commentVisible, setCommentVisible } = useShowComment()
+  const { commentVisible, setCommentVisible } = useShowCommentStore()
   const transRef = useSpringRef();
-  const sidebarAnimation = useSpring({
-    transform: commentVisible ? 'translateX(0%)' : 'translateX(100%)'
-  });
+
   const transition = useTransition(index, {
     ref: transRef,
     keys: null,
@@ -179,7 +177,7 @@ const Home: FC<MyProps> = function Home() {
 
           </div>
         </div>
-        { commentVisible && <animated.div style={sidebarAnimation} className='h-full w-56 bg-red-600'></animated.div>}
+        { commentVisible && <Comment />}
       </div>
     </div>
   );

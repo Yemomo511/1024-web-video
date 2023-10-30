@@ -2,6 +2,7 @@
 export interface commentType{
     id:string,
     userId:string,
+    avatar:string
     content:string,
 }
 export interface videoType{
