@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { FC, ReactNode, HTMLAttributes, CSSProperties } from "react";
 import css from "./index.module.css";
 import Video from "~components/Video/Video";
@@ -9,6 +9,7 @@ import {
   animated,
   useSpringRef,
   useTransition,
+  useSpring,
 } from "@react-spring/web";
 import { videoType } from "~/common/type";
 import mp4 from "~assets/video/loli.mp4";
@@ -16,7 +17,7 @@ import musicMp4 from "~assets/video/music.mp4"
 import poster from "~assets/poster/poster.jpg";
 import poster2 from "~assets/poster/poster2.jpeg";
 import { nanoid } from "nanoid";
-import { useVideoIndexStore } from "~/store/store";
+import { useShowComment } from "~store/showComment.ts";
 
 const videoData: videoType[] = [
   {
@@ -87,7 +88,11 @@ const Home: FC<MyProps> = function Home() {
   const videoBoxRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState<number>(0);
   const [direct, setDirect] = useState(true);
+  const { commentVisible, setCommentVisible } = useShowComment()
   const transRef = useSpringRef();
+  const sidebarAnimation = useSpring({
+    transform: commentVisible ? 'translateX(0%)' : 'translateX(100%)'
+  });
   const transition = useTransition(index, {
     ref: transRef,
     keys: null,
@@ -141,6 +146,7 @@ const Home: FC<MyProps> = function Home() {
         }
         timer.current = setTimeout(() => {
           console.log("inner")
+          setCommentVisible(false)
           if (e.deltaY > 0) {
             console.log("inner")
             turnUpVideo();
@@ -148,7 +154,7 @@ const Home: FC<MyProps> = function Home() {
             turnDownVideo();
           }
         }, 100);
-         
+
       });
     }
   },[]);
@@ -160,7 +166,7 @@ const Home: FC<MyProps> = function Home() {
       <div className={css.header}>
         <Header></Header>
       </div>
-      <div className={css.content}>
+      <div className={`${css.content} flex flex-row`}>
         <div className={css.nav}>
           <Nav></Nav>
         </div>
@@ -170,8 +176,10 @@ const Home: FC<MyProps> = function Home() {
               const Page = pages[item];
               return <Page style={style}></Page>;
             })}
+
           </div>
         </div>
+        { commentVisible && <animated.div style={sidebarAnimation} className='h-full w-56 bg-red-600'></animated.div>}
       </div>
     </div>
   );
