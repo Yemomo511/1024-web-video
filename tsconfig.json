@@ -4,8 +4,10 @@
     "useDefineForClassFields": true,
     "lib": [
       "ES2020",
-      "DOM",
-      "DOM.Iterable"
+      "es5",
+      "es6",
+      "dom",
+      "dom.iterable"
     ],
     "module": "ESNext",
     "skipLibCheck": true,
@@ -29,32 +31,65 @@
       "~components/*": [
         "src/components/*"
       ],
+      "~pages/*": [
+        "src/pages/*"
+      ],
       "~/*": [
         "src/*"
+      ],
+      "~poster/*": [
+        "src/assets/poster/*"
       ],
       "~utils/*": [
         "src/utils/*"
       ],
-      "~common/*": [
-        "src/common/*"
+      "~api/*": [
+        "src/utils/api/*"
       ],
-      "~hooks/*": [
-        "src/hooks/*"
+      "~video/*": [
+        "src/utils/video/*"
       ],
-      "~pages/*": [
-        "src/pages/*"
+      "~page/*": [
+        "src/page/*"
+      ],
+      "~Slider/*": [
+        "src/components/Slider/*"
+      ],
+      "~icon/*": [
+        "src/assets/icon/*"
+      ],
+      "~network/*": [
+        "src/utils/network/*"
+      ],
+      "~Icon/*": [
+        "src/components/Icon/*"
+      ],
+      "~TextWithS/*": [
+        "src/components/TextWithS/*"
+      ],
+      "~TextWithSwitch/*": [
+        "src/components/TextWithSwitch/*"
       ],
       "~routes/*": [
         "src/routes/*"
       ],
+      "~Home/*": [
+        "src/pages/Home/*"
+      ],
+      "~My/*": [
+        "src/pages/My/*"
+      ],
+      "~Popup/*": [
+        "src/components/Popup/*"
+      ],
+      "~hooks/*": [
+        "src/hooks/*"
+      ],
+      "~common/*": [
+        "src/common/*"
+      ],
       "~store/*": [
         "src/store/*"
-      ],
-      "~header/*": [
-        "src/assets/header/*"
-      ],
-      "~IconCard/*": [
-        "src/components/IconCard/*"
       ]
     }
   },
