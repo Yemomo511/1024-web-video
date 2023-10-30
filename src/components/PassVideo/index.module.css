@@ -1,24 +1,27 @@
-.box{
+.box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 10px;
-}   
-.topBox{
+}
+
+.topBox {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color:white
+    color: white
 }
-.upload-box{
+
+.upload-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.button:focus{
+
+.button:focus {
     outline: none;
     border: none;
 }

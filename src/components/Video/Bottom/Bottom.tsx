@@ -15,7 +15,10 @@ import SliderIcon from "~components/SliderIcon/SliderIcon";
 import poster from "~assets/poster/poster.jpg";
 
 //playerRef 为 Ref current为Dplayer实例，
-const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | null },ref:any) {
+const Bottom = forwardRef(function Bottom(
+  { playerRef }: { playerRef: DPlayer | null },
+  ref: any
+) {
   const [currentTime, setCurrentTime] = useState(0);
   const [isPause, setIsPause] = useState(false);
   const volumeRef = useRef<HTMLDivElement>(null);
@@ -25,7 +28,7 @@ const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | 
       playerRef.video.muted = true;
       playerRef.video.muted = false;
     }
-  }, [playerRef,isPause]);
+  }, [playerRef, isPause]);
 
   const allTimeState = useMemo(() => {
     if (playerRef) {
@@ -37,10 +40,10 @@ const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | 
     } else {
       return 0;
     }
-  }, [playerRef, isPause,currentTime]);
+  }, [playerRef, isPause, currentTime]);
   const { speedConfig, qualityConfig } = useVideoConfig(playerRef);
   let timer: number;
-  //开启监听
+  //开启监听，轮询持续时间进行刷新
   useEffect(() => {
     if (playerRef) {
       console.log(playerRef);
@@ -65,7 +68,7 @@ const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | 
   useEffect(() => {
     if (playerRef) {
       if (isPause) {
-        if (!playerRef.video.paused){
+        if (!playerRef.video.paused) {
           playerRef.pause();
         }
       } else {
@@ -77,13 +80,11 @@ const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | 
   }, [isPause, playerRef]);
 
   useEffect(() => {
-    //轮询
     if (playerRef) {
       let duration = Math.floor(playerRef.video.currentTime);
       setCurrentTime(duration);
     }
   }, [playerRef, isPause]);
-
 
   //子组件
   const sliderVertical = useMemo(() => {
@@ -91,7 +92,7 @@ const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | 
       <div
         className={css.sliderVerticalBox}
         style={{
-          display: "flex" ,
+          display: "flex",
         }}
       >
         <SliderAntd
@@ -122,64 +123,60 @@ const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | 
         <SliderIcon avatar={poster} username="叶墨沫"></SliderIcon>
       </div>
       <div className={css.bottomBox} ref={ref}>
-      <div className={css.progressBar}>
-        <div className={css.sliderBox}>
-          <Slider
-            changeTime={(time: number) => {
-              setCurrentTime(time);
-            }}
-            isPause={isPause}
-            playerRef={playerRef}
-            allTime={allTimeState}
-            currentTime={currentTime}
-          ></Slider>
-        </div>
-      </div>
-      <div className={css.controlBox}>
-        <div className={css.control}>
-          <Icon
-            src={isPause ? imageUrl.video.play : imageUrl.video.pause}
-            onPress={() => {
-              setIsPause((state: boolean) => {
-                return !state;
-              });
-            }}
-          ></Icon>
-          <p className={css.progressText}>
-            {stringWithTime(currentTime)}/{stringWithTime(allTimeState)}
-          </p>
-          <div className={css.volumeBox} ref={volumeRef}>
-            <Tooltip
-            placement="top"
-            title={sliderVertical}>
-              <div
-                style={{
-                  width: "30px",
-                  height: "30px",
-                }}
-              >
-                <Icon
-                  src={imageUrl.video.volume}
-                ></Icon>
-              </div>
-            </Tooltip>
+        <div className={css.progressBar}>
+          <div className={css.sliderBox}>
+            <Slider
+              changeTime={(time: number) => {
+                setCurrentTime(time);
+              }}
+              isPause={isPause}
+              playerRef={playerRef}
+              allTime={allTimeState}
+              currentTime={currentTime}
+            ></Slider>
           </div>
-          <DammuInput playerRef={playerRef}></DammuInput>
         </div>
-        <div className={css.control}>
-          <TextWithSwitch>自动播放</TextWithSwitch>
-          <TextMenu title="倍数" menuConfig={speedConfig}></TextMenu>
-          <TextMenu title="画质" menuConfig={qualityConfig}></TextMenu>
-          <Icon
-            src={imageUrl.video.FullScreen}
-            onPress={() => {
-              setIsFull(!isFull);
-            }}
-          ></Icon>
+        <div className={css.controlBox}>
+          <div className={css.control}>
+            <Icon
+              src={isPause ? imageUrl.video.play : imageUrl.video.pause}
+              onPress={() => {
+                setIsPause((state: boolean) => {
+                  return !state;
+                });
+              }}
+            ></Icon>
+            <p className={css.progressText}>
+              {stringWithTime(currentTime)}/{stringWithTime(allTimeState)}
+            </p>
+            <div className={css.volumeBox} ref={volumeRef}>
+              <Tooltip placement="top" title={sliderVertical}>
+                <div
+                  style={{
+                    width: "30px",
+                    height: "30px",
+                  }}
+                >
+                  <Icon src={imageUrl.video.volume}></Icon>
+                </div>
+              </Tooltip>
+            </div>
+            <DammuInput playerRef={playerRef}></DammuInput>
+          </div>
+          <div className={css.control}>
+            <TextWithSwitch>自动播放</TextWithSwitch>
+            <TextMenu title="倍数" menuConfig={speedConfig}></TextMenu>
+            <TextMenu title="画质" menuConfig={qualityConfig}></TextMenu>
+            <Icon
+              src={imageUrl.video.FullScreen}
+              onPress={() => {
+                setIsFull(!isFull);
+              }}
+            ></Icon>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );
-})
-export default Bottom
+});
+export default Bottom;

@@ -1,11 +1,12 @@
-.box{
+.box {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     background-color: #292b35;
 }
-.header{
+
+.header {
     background-color: #292b35;
     box-sizing: border-box;
     height: 70px;
@@ -15,31 +16,35 @@
     justify-content: space-between;
     align-items: center;
 }
-.content{
-    flex:1 1 0%;
+
+.content {
+    flex: 1 1 0%;
     display: flex;
     flex-direction: row;
 }
-.nav{
+
+.nav {
     width: 10%;
     max-width: 100px;
     min-width: 50px;
 }
 
-.video{
+.video {
     position: relative;
     height: calc(100vh - 70px);
     border-radius: 30px;
     overflow: hidden;
     min-width: 300px;
-    flex:1 1 0%;
+    flex: 1 1 0%;
 }
-.transBox{
+
+.transBox {
     position: absolute;
     width: 100%;
     height: 100%;
 }
-.transCard{
+
+.transCard {
     position: absolute;
     width: 100%;
     height: 100%;

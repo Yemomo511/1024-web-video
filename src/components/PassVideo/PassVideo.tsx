@@ -12,7 +12,7 @@ const PassVideo: FC<propsType> = () => {
   const [fileState, setFileState] = useState<UploadFileStatus | undefined>();
   const [file, setFile] = useState<any>(undefined);
   const [isUpload, setIsUpload] = useState(false);
-  
+
   const uploadProps: UploadProps = useMemo(
     () => ({
       name: "file",
@@ -31,25 +31,27 @@ const PassVideo: FC<propsType> = () => {
   );
   return (
     <div className={css.box}>
-      <Upload {...uploadProps}
-      className={css.topBox}
-      >
+      <Upload {...uploadProps} className={css.topBox}>
         <div className={css.uploadBox}>
           <Icon src={imageUrl.header.uploadVideo}></Icon>
-          <p style={{
-            color:"white"
-          }}>请选择上传的视频</p>
+          <p
+            style={{
+              color: "white",
+            }}
+          >
+            请选择上传的视频
+          </p>
         </div>
       </Upload>
       <ConfigProvider
-      theme={{
-        components:{
-            Button:{
-                colorPrimary:"#403C56",
-                colorLinkActive:"none"
-            }
-        }
-      }}
+        theme={{
+          components: {
+            Button: {
+              colorPrimary: "#403C56",
+              colorLinkActive: "none",
+            },
+          },
+        }}
       >
         <Button
           type="primary"

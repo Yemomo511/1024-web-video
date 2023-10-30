@@ -14,13 +14,13 @@ import Icon from "~components/Icon/Icon";
 import { Avatar, Popover } from "antd";
 export default function SliderIcon({
   username,
-  avatar
-}:{
-  username:string
-  avatar:string
+  avatar,
+}: {
+  username: string;
+  avatar: string;
 }) {
   const [isLiked, setIsLiked] = useState(true);
-  const [isPop,setIsPop] = useState(false)
+  const [isPop, setIsPop] = useState(false);
   const { rive: likeRive, RiveComponent: LikeComponent } = useRive({
     src: likeRiv,
     stateMachines: "State",
@@ -43,22 +43,24 @@ export default function SliderIcon({
   }, [isLiked, onInput]);
   return (
     <div className={css.box}>
-
-      <Popover 
-      open={isPop}
-      placement="left"
-      className={css.avatar}
-      content={<div>{username}</div>}
+      <Popover
+        open={isPop}
+        placement="left"
+        className={css.avatar}
+        content={<div>{username}</div>}
       >
-        <div onMouseEnter={()=>{
-          setIsPop(true)
-        }} onMouseLeave={()=>{
-          setIsPop(false)
-        }}>
+        <div
+          onMouseEnter={() => {
+            setIsPop(true);
+          }}
+          onMouseLeave={() => {
+            setIsPop(false);
+          }}
+        >
           <Avatar size={50} src={avatar}></Avatar>
         </div>
       </Popover>
-  
+
       <div
         className={css.likeBox}
         onClick={() => {

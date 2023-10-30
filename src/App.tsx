@@ -14,17 +14,19 @@ function App() {
   return (
     <div className="css-all-box">
       {routes}
-      <ConfigProvider theme={{
-        components:{
-          Modal:{
-              contentBg:"#292b35",
+      <ConfigProvider
+        theme={{
+          components: {
+            Modal: {
+              contentBg: "#292b35",
+            },
+            Upload: {
+              colorPrimary: "white",
+              actionsColor: "white",
+            },
           },
-          Upload:{
-            colorPrimary:"white",
-            actionsColor:"white",
-          }
-        }
-      }}>
+        }}
+      >
         {
           <Modal
             open={model == modelType.UPLOAD}

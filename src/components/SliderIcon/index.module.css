@@ -1,4 +1,4 @@
-.box{
+.box {
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -7,25 +7,30 @@
     z-index: 99;
     margin-bottom: 30px;
 }
-.avatar{
+
+.avatar {
     cursor: pointer;
 }
-.likeBox{
+
+.likeBox {
     width: 80px;
     height: 80px;
     transition: all 0.1s;
     cursor: pointer;
 }
-.likeBox:hover{
+
+.likeBox:hover {
     transform: scale(1.2);
 }
-.icon-box{
+
+.icon-box {
     width: 30px;
     height: 30px;
     transition: all 0.1s;
     cursor: pointer;
 }
-.other-icon-box{
+
+.other-icon-box {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
@@ -33,6 +38,7 @@
     justify-content: center;
     align-items: center;
 }
-.icon-box:hover{
+
+.icon-box:hover {
     transform: scale(1.2);
 }

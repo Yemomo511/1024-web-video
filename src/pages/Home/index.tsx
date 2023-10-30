@@ -12,7 +12,7 @@ import {
 } from "@react-spring/web";
 import { videoType } from "~/common/type";
 import mp4 from "~assets/video/loli.mp4";
-import musicMp4 from "~assets/video/music.mp4"
+import musicMp4 from "~assets/video/music.mp4";
 import poster from "~assets/poster/poster.jpg";
 import poster2 from "~assets/poster/poster2.jpeg";
 import { nanoid } from "nanoid";
@@ -104,32 +104,32 @@ const Home: FC<MyProps> = function Home() {
     },
   });
   const turnUpVideo = useCallback(() => {
-      const upState = () => {
-        setDirect(true);
-        setIndex((state: number) => {
-          console.log(state, "state");
-          if (state === videoData.length - 1) {
-            return 0;
-          } else {
-            return state + 1;
-          }
-        });
-      }
-      upState()
+    const upState = () => {
+      setDirect(true);
+      setIndex((state: number) => {
+        console.log(state, "state");
+        if (state === videoData.length - 1) {
+          return 0;
+        } else {
+          return state + 1;
+        }
+      });
+    };
+    upState();
   }, [index]);
   const turnDownVideo = useCallback(() => {
-      const upState = () => {
-        setDirect(false);
-        setIndex((state: number) => {
-          console.log(state, "state");
-          if (state === 0) {
-            return videoData.length - 1;
-          } else {
-            return state - 1;
-          }
-        });
-      };
-      upState()
+    const upState = () => {
+      setDirect(false);
+      setIndex((state: number) => {
+        console.log(state, "state");
+        if (state === 0) {
+          return videoData.length - 1;
+        } else {
+          return state - 1;
+        }
+      });
+    };
+    upState();
   }, [index, videoData]);
   let timer = useRef<number | null>(null);
   useEffect(() => {
@@ -139,18 +139,17 @@ const Home: FC<MyProps> = function Home() {
           clearTimeout(timer.current);
         }
         timer.current = setTimeout(() => {
-          console.log("inner")
+          console.log("inner");
           if (e.deltaY > 0) {
-            console.log("inner")
+            console.log("inner");
             turnUpVideo();
           } else if (e.deltaY < -0) {
             turnDownVideo();
           }
         }, 100);
-         
       });
     }
-  },[]);
+  }, []);
   useEffect(() => {
     transRef.start();
   }, [index]);
