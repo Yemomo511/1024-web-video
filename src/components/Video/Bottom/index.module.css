@@ -1,33 +1,41 @@
-.box{
+.box {
     position: absolute;
     width: 100%;
-    bottom:0;
+    bottom: 0;
     padding: 10px;
     display: flex;
     flex-direction: column;
-    z-index:99;
+    z-index: 99;
 
 }
+
 /*设置点击穿透*/
-.slider-bar , .progressBar , .progressBar , .control-box{
+.slider-bar,
+.progressBar,
+.progressBar,
+.control-box {
     pointer-events: all;
 }
-.progressBar{
+
+.progressBar {
     width: 100%;
-    padding:0px 10px;
+    padding: 0px 10px;
 }
-.progress-text{
-    margin:0;
-    padding:0;
+
+.progress-text {
+    margin: 0;
+    padding: 0;
     font-weight: 400;
     min-width: 92px;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
 }
-.slider-box{
+
+.slider-box {
     width: calc(100% - 20px);
     height: 20px;
 }
-.control-box{
+
+.control-box {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -35,15 +43,17 @@
     width: calc(100% - 20px);
     padding: 0px 10px;
 }
-.control{
+
+.control {
     display: flex;
     column-gap: 20px;
     justify-content: center;
     align-items: center;
-    color:white;
+    color: white;
     white-space: nowrap;
 }
-.control > p{
+
+.control>p {
     cursor: pointer;
 }
 
@@ -51,7 +61,7 @@
 
 
 /*音量滑动*/
-.volumeBox{
+.volumeBox {
     display: flex;
     flex-direction: column;
     width: 30px;
@@ -59,30 +69,34 @@
     justify-content: flex-end;
     overflow: visible;
 }
-.slider-vertical-box{
+
+.slider-vertical-box {
     border-radius: 5px;
-    padding:10px;
+    padding: 10px;
     justify-content: center;
     align-items: center;
     background-color: #363741;
-    z-index:9999;
+    z-index: 9999;
 }
-.slider-vertical{
+
+.slider-vertical {
     height: 100px;
-    margin:0;
+    margin: 0;
 }
+
 /*倍速*/
-.speed-box > p{
+.speed-box>p {
     cursor: pointer;
     white-space: nowrap;
 }
+
 /*侧边栏*/
-.slider-bar{
+.slider-bar {
     align-self: flex-end;
 }
 
 /*底部*/
-.bottom-box{
+.bottom-box {
     display: flex;
     flex-direction: column;
     justify-content: center;

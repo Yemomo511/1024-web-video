@@ -16,7 +16,7 @@ import follow from "~assets/icon/Nav/userFocus.svg"
 import passVideo from "~assets/icon/Header/passVideo.svg"
 import hot from "~assets/icon/Nav/hot.svg"
 import game from "~assets/icon/Nav/game.svg"
-
+import uploadVideo from "~assets/icon/Header/uploadVideo.svg"
 const imageUrl = {
 //改为import from引入
     video: {
@@ -36,7 +36,8 @@ const imageUrl = {
         search,
         notice,
         list,
-        passVideo
+        passVideo,
+        uploadVideo
     },
     nav:{
         index,

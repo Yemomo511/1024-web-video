@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import DPlayer from "dplayer";
-export default function useVideoConfig( playerRef : DPlayer|null) {
+export default function useVideoConfig(playerRef: DPlayer | null) {
   const speedConfig = useMemo(() => {
     return [
       {
@@ -39,38 +39,34 @@ export default function useVideoConfig( playerRef : DPlayer|null) {
     ];
   }, [playerRef]);
 
-  const qualityConfig = useMemo(()=>{
+  const qualityConfig = useMemo(() => {
     return [
-        {
-          text: "1080P 高清",
-          click: () => {
-            
-          },
+      {
+        text: "1080P 高清",
+        click: () => {},
+      },
+      {
+        text: "720P 高清",
+        click: () => {
+          if (playerRef) {
+            playerRef.speed(1.25);
+          }
         },
-        {
-          text: "720P 高清",
-          click: () => {
-            if (playerRef) {
-              playerRef.speed(1.25);
-            }
-          },
+      },
+      {
+        text: "480P 清晰",
+        click: () => {},
+      },
+      {
+        text: "360P 流畅",
+        click: () => {
+          if (playerRef) {
+            console.log(playerRef);
+            playerRef.speed(2);
+          }
         },
-        {
-          text: "480P 清晰",
-          click: () => {
-            
-          },
-        },
-        {
-          text: "360P 流畅",
-          click: () => {
-            if (playerRef) {
-              console.log(playerRef);
-              playerRef.speed(2);
-            }
-          },
-        },
-      ];
-  },[playerRef])
-  return {speedConfig,qualityConfig}
+      },
+    ];
+  }, [playerRef]);
+  return { speedConfig, qualityConfig };
 }

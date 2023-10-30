@@ -1,19 +1,20 @@
-.css-all-box{
+.css-all-box {
     position: absolute;
-    top:0;
-    left:0;
-    bottom:0;
-    right:0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
-.dplayer-controller{
+
+.dplayer-controller {
     display: none;
 }
 
-.ant-slider-handle:hover{
+.ant-slider-handle:hover {
     scale: 1.1;
 }
 

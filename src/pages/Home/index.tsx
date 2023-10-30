@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import type { FC, ReactNode, HTMLAttributes, CSSProperties } from "react";
 import css from "./index.module.css";
 import Video from "~components/Video/Video";
@@ -12,12 +12,10 @@ import {
 } from "@react-spring/web";
 import { videoType } from "~/common/type";
 import mp4 from "~assets/video/loli.mp4";
-import musicMp4 from "~assets/video/music.mp4"
+import musicMp4 from "~assets/video/music.mp4";
 import poster from "~assets/poster/poster.jpg";
 import poster2 from "~assets/poster/poster2.jpeg";
 import { nanoid } from "nanoid";
-import { useShowCommentStore } from "~store/showComment.ts";
-import Comment from "~components/Comment";
 
 const videoData: videoType[] = [
   {
@@ -88,9 +86,7 @@ const Home: FC<MyProps> = function Home() {
   const videoBoxRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState<number>(0);
   const [direct, setDirect] = useState(true);
-  const { commentVisible, setCommentVisible } = useShowCommentStore()
   const transRef = useSpringRef();
-
   const transition = useTransition(index, {
     ref: transRef,
     keys: null,
@@ -108,32 +104,32 @@ const Home: FC<MyProps> = function Home() {
     },
   });
   const turnUpVideo = useCallback(() => {
-      const upState = () => {
-        setDirect(true);
-        setIndex((state: number) => {
-          console.log(state, "state");
-          if (state === videoData.length - 1) {
-            return 0;
-          } else {
-            return state + 1;
-          }
-        });
-      }
-      upState()
+    const upState = () => {
+      setDirect(true);
+      setIndex((state: number) => {
+        console.log(state, "state");
+        if (state === videoData.length - 1) {
+          return 0;
+        } else {
+          return state + 1;
+        }
+      });
+    };
+    upState();
   }, [index]);
   const turnDownVideo = useCallback(() => {
-      const upState = () => {
-        setDirect(false);
-        setIndex((state: number) => {
-          console.log(state, "state");
-          if (state === 0) {
-            return videoData.length - 1;
-          } else {
-            return state - 1;
-          }
-        });
-      };
-      upState()
+    const upState = () => {
+      setDirect(false);
+      setIndex((state: number) => {
+        console.log(state, "state");
+        if (state === 0) {
+          return videoData.length - 1;
+        } else {
+          return state - 1;
+        }
+      });
+    };
+    upState();
   }, [index, videoData]);
   let timer = useRef<number | null>(null);
   useEffect(() => {
@@ -143,19 +139,17 @@ const Home: FC<MyProps> = function Home() {
           clearTimeout(timer.current);
         }
         timer.current = setTimeout(() => {
-          console.log("inner")
-          setCommentVisible(false)
+          console.log("inner");
           if (e.deltaY > 0) {
-            console.log("inner")
+            console.log("inner");
             turnUpVideo();
           } else if (e.deltaY < -0) {
             turnDownVideo();
           }
         }, 100);
-
       });
     }
-  },[]);
+  }, []);
   useEffect(() => {
     transRef.start();
   }, [index]);
@@ -164,7 +158,7 @@ const Home: FC<MyProps> = function Home() {
       <div className={css.header}>
         <Header></Header>
       </div>
-      <div className={`${css.content} flex flex-row`}>
+      <div className={css.content}>
         <div className={css.nav}>
           <Nav></Nav>
         </div>
@@ -174,10 +168,8 @@ const Home: FC<MyProps> = function Home() {
               const Page = pages[item];
               return <Page style={style}></Page>;
             })}
-
           </div>
         </div>
-        { commentVisible && <Comment />}
       </div>
     </div>
   );
