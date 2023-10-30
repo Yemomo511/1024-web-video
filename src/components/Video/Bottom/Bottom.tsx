@@ -17,7 +17,7 @@ import poster from "~assets/poster/poster.jpg";
 //playerRef 为 Ref current为Dplayer实例，
 const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | null },ref:any) {
   const [currentTime, setCurrentTime] = useState(0);
-  const [isPause, setIsPause] = useState(true);
+  const [isPause, setIsPause] = useState(false);
   const volumeRef = useRef<HTMLDivElement>(null);
   const { setIsFull, isFull } = useFullScreenStore((state) => state);
   useEffect(() => {
@@ -25,7 +25,7 @@ const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | 
       playerRef.video.muted = true;
       playerRef.video.muted = false;
     }
-  }, [playerRef]);
+  }, [playerRef,isPause]);
 
   const allTimeState = useMemo(() => {
     if (playerRef) {
@@ -37,7 +37,7 @@ const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | 
     } else {
       return 0;
     }
-  }, [playerRef, isPause]);
+  }, [playerRef, isPause,currentTime]);
   const { speedConfig, qualityConfig } = useVideoConfig(playerRef);
   let timer: number;
   //开启监听
@@ -51,7 +51,6 @@ const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | 
         timer = setInterval(() => {
           if (playerRef) {
             let duration = Math.floor(playerRef.video.currentTime);
-            console.log(duration);
             setCurrentTime(duration);
           }
         }, 1000);
@@ -66,9 +65,13 @@ const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | 
   useEffect(() => {
     if (playerRef) {
       if (isPause) {
-        playerRef.pause();
+        if (!playerRef.video.paused){
+          playerRef.pause();
+        }
       } else {
-        playerRef.play();
+        if (playerRef.video.paused) {
+          playerRef.play();
+        }
       }
     }
   }, [isPause, playerRef]);
@@ -125,6 +128,7 @@ const Bottom = forwardRef(function Bottom({ playerRef }: { playerRef: DPlayer | 
             changeTime={(time: number) => {
               setCurrentTime(time);
             }}
+            isPause={isPause}
             playerRef={playerRef}
             allTime={allTimeState}
             currentTime={currentTime}

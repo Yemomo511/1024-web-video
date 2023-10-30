@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useState } from "react";
+import React, { FC, useEffect, useMemo, useState } from "react";
 import Upload from "antd/es/upload/Upload";
 import css from "./index.module.css";
 import type { UploadProps } from "antd";
@@ -12,6 +12,7 @@ const PassVideo: FC<propsType> = () => {
   const [fileState, setFileState] = useState<UploadFileStatus | undefined>();
   const [file, setFile] = useState<any>(undefined);
   const [isUpload, setIsUpload] = useState(false);
+  
   const uploadProps: UploadProps = useMemo(
     () => ({
       name: "file",

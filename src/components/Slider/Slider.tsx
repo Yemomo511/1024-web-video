@@ -1,9 +1,10 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Slider as SliderAntd } from 'antd'
 import { stringWithTime } from '~/utils/api/common'
 import DPlayer from 'dplayer'
 import "./index.css"
 function Slider({
+    isPause,
     changeTime,
     playerRef,
     currentTime,
@@ -12,9 +13,9 @@ function Slider({
     changeTime:(time:number)=>void,
     playerRef: DPlayer|null,
     currentTime:number,
-    allTime:number
+    allTime:number,
+    isPause:boolean
 }){
-    
     const sliderRef = useRef<any>()
     const notice = useCallback((state?:number|undefined)=>{
         if (state){
