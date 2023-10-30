@@ -23,7 +23,7 @@ export default function Video({
   const [playerRef,setPlayerRef] = useState<DPlayer | null>(()=>{
     return null
   })
-  
+
   const maskRef = useRef<HTMLDivElement>(null)
   const playerBoxRef = useRef<HTMLDivElement>(null)
   const isFull = useFullScreenStore((state) => state.isFull);
@@ -126,7 +126,8 @@ export default function Video({
             <Buttom playerRef={playerRef} ref={bottomRef} ></Buttom>
         </ConfigProvider>
       </div>
-     
+
     </div>
   );
 }
+
