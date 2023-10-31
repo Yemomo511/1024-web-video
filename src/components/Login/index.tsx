@@ -4,7 +4,7 @@ import {Controller, SubmitHandler, useForm} from "react-hook-form";
 import toast from "react-hot-toast";
 import welcome from "~assets/welcome.png";
 import Input from "antd/es/input/Input";
-import {EyeInvisibleOutlined, EyeTwoTone, LockOutlined, UserOutlined} from "@ant-design/icons";
+import {EyeInvisibleOutlined, EyeTwoTone, LockOutlined, UserOutlined, CloseOutlined} from "@ant-design/icons";
 import {Checkbox} from "antd";
 
 interface MyProps extends HTMLAttributes<HTMLElement>{
@@ -44,6 +44,7 @@ const Login: FC<MyProps> = memo(({ hide }) => {
         <div className="flex flrex-row w-[50rem] h-[25rem]">
             <img src={welcome} alt='' className="w-[60%] h-full bg-contain"/>
             <div className="flex flex-1 flex-col ml-5 px-5 gap-5 bg-[#00bfff20] rounded-tr-[8px] rounded-l-3xl">
+                <CloseOutlined className="absolute right-5 top-5" onClick={hide}/>
                 <p className="font-bold text-xl mt-5">登录</p>
                 <p className="text-xs -mt-4 mb-5">登录收藏更多精彩视频</p>
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
