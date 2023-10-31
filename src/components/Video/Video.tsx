@@ -9,6 +9,7 @@ import { useFullScreenStore } from "~/store/store";
 import { ConfigProvider } from "antd";
 import { videoType } from "~/types/type";
 import { useModelStore } from "~/store/store";
+import { lightColors } from "~/common/color";
 //定义渲染模式
 
 //得用canvas播放视频
@@ -124,6 +125,7 @@ export default function Video({ videoData }: { videoData: videoType }) {
                 colorBgSpotlight: "transparent",
                 boxShadowSecondary:"none"
               },
+             
             },
           }}
         >

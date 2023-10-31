@@ -5,7 +5,7 @@ import Slider from "~components/Slider/Slider";
 import { stringWithTime } from "~/utils/api/common";
 import imageUrl from "~/common/image";
 import Icon from "~components/Icon/Icon";
-import { Popover, Slider as SliderAntd, Tooltip } from "antd";
+import { ConfigProvider, Popover, Slider as SliderAntd, Tooltip } from "antd";
 import TextWithSwitch from "~components/TextWithSwitch/TextWithSwitch";
 import TextMenu from "~components/Controller/TextMenu/TextMenu";
 import useVideoConfig from "~/hooks/useVideoConfig";
@@ -13,6 +13,7 @@ import { useFullScreenStore } from "~/store/store";
 import DammuInput from "~components/DammuInput/DammuInput";
 import SliderIcon from "~components/SliderIcon/SliderIcon";
 import poster from "~assets/poster/poster.jpg";
+import { lightColors } from "~/common/color";
 
 //playerRef 为 Ref current为Dplayer实例，
 const Bottom = forwardRef(function Bottom(
@@ -95,24 +96,41 @@ const Bottom = forwardRef(function Bottom(
           display: "flex",
         }}
       >
-        <SliderAntd
-          className={css.sliderVertical}
-          styles={{
-            track: {
-              backgroundColor: "",
+        <ConfigProvider 
+        theme={{
+          components:{
+            Slider:{
+              dotActiveBorderColor:"white",
+              trackBg:lightColors.gray,
+              trackHoverBg:lightColors.lightGray,
+              handleActiveColor:lightColors.lightGray,
+              handleColor:lightColors.gray,
+              dotSize:5,
             },
-          }}
-          defaultValue={0.7}
-          max={1}
-          min={0}
-          step={0.01}
-          vertical
-          onChange={(state: number) => {
-            if (playerRef) {
-              playerRef.video.volume = state;
-            }
-          }}
-        ></SliderAntd>
+            
+          }
+
+        }}
+        >
+          <SliderAntd
+            className={css.sliderVertical}
+            styles={{
+              track: {
+                backgroundColor: "",
+              },
+            }}
+            defaultValue={0.7}
+            max={1}
+            min={0}
+            step={0.01}
+            vertical
+            onChange={(state: number) => {
+              if (playerRef) {
+                playerRef.video.volume = state;
+              }
+            }}
+          ></SliderAntd>
+        </ConfigProvider>
       </div>
     );
   }, []);

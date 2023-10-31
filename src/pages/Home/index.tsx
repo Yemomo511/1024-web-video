@@ -19,6 +19,7 @@ import { nanoid } from "nanoid";
 import { useShowCommentStore } from "~store/showComment.ts";
 import Comment from "../../components/Comment/index.tsx";
 import { ConfigProvider } from "antd";
+import { lightColors } from "~/common/color.ts";
 
 const videoData: videoType[] = [
   {
