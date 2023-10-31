@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useRef,
 } from "react";
-import css from "./index.module.css";
+import css from "./index.module.less";
 import Icon from "~components/Icon/Icon";
 
 interface MyProps extends HTMLAttributes<HTMLElement> {

@@ -1,6 +1,6 @@
 import { Switch } from "@mui/material";
 import React from "react";
-import css from "./index.module.css";
+import css from "./index.module.less";
 export default function TextWithSwitch({
   children,
 }: {

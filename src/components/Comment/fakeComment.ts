@@ -1,4 +1,4 @@
-import {commentType} from "~common/type";
+import {commentType} from "~types/type";
 
 export const fakeComment : commentType[] = []
 

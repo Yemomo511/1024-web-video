@@ -10,7 +10,7 @@ import {
   useSpringRef,
   useTransition,
 } from "@react-spring/web";
-import { videoType } from "~/common/type";
+import { videoType } from "~/types/type";
 import mp4 from "~assets/video/loli.mp4";
 import musicMp4 from "~assets/video/music.mp4";
 import poster from "~assets/poster/poster.jpg";

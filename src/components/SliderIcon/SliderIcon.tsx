@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import css from "./index.module.css";
+import css from "./index.module.less";
 
 import {
   Fit,

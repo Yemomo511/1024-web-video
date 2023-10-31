@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import css from "./index.module.css"
+import css from "./index.module.less"
 import imageUrl from '~/common/image'
 import Icon from '~components/Icon/Icon'
 export default function DammuInput({playerRef}:{

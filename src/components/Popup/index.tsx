@@ -1,7 +1,7 @@
 import { animated, useSpring } from '@react-spring/web'
 import type {FC, ReactNode} from 'react'
 import { useState } from 'react'
-import css from './index.module.css'
+import css from './index.module.less'
 
 interface MyProps {
     visible: boolean

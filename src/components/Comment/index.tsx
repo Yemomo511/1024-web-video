@@ -4,7 +4,7 @@ import {animated, useSpring} from "@react-spring/web";
 import {useShowCommentStore} from "~store/showComment.ts";
 import {Card, Avatar} from "antd";
 import {fakeComment} from "./fakeComment.ts";
-import {commentType} from "~common/type";
+import {commentType} from "~types/type";
 
 interface MyProps extends HTMLAttributes<HTMLElement> {
     children?: ReactNode

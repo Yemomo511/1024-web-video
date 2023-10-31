@@ -1,5 +1,5 @@
 import React from 'react'
-import css from "./index.module.css"
+import css from "./index.module.less"
 export default function Icon({
     src,
     onPress=()=>{}

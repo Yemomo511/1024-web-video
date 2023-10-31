@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useMemo, useState } from "react";
 import Upload from "antd/es/upload/Upload";
-import css from "./index.module.css";
+import css from "./index.module.less";
 import type { UploadProps } from "antd";
 import { UploadFileStatus } from "antd/es/upload/interface";
 import imageUrl from "~/common/image";
@@ -47,7 +47,7 @@ const PassVideo: FC<propsType> = () => {
         theme={{
           components: {
             Button: {
-              colorPrimary: "#403C56",
+              colorPrimary: "#7689BE",
               colorLinkActive: "none",
             },
           },

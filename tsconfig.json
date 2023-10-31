@@ -90,6 +90,9 @@
       ],
       "~store/*": [
         "src/store/*"
+      ],
+      "~types/*": [
+        "src/types/*"
       ]
     }
   },

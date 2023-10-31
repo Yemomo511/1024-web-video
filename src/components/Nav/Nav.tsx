@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./index.module.css";
+import css from "./index.module.less";
 import NavCard from "~components/IconCard/IconCard";
 import imageUrl from "~/common/image";
 const navList = [

@@ -1,5 +1,5 @@
 import React, { forwardRef, useEffect, useMemo, useRef, useState } from "react";
-import css from "./index.module.css";
+import css from "./index.module.less";
 import DPlayer, { DPlayerEvents } from "dplayer";
 import Slider from "~components/Slider/Slider";
 import { stringWithTime } from "~/utils/api/common";
