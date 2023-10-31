@@ -93,6 +93,15 @@
       ],
       "~types/*": [
         "src/types/*"
+      ],
+      "~Notice/*": [
+        "src/components/Notice/*"
+      ],
+      "~Controller/*": [
+        "src/components/Controller/*"
+      ],
+      "~TextMenu/*": [
+        "src/components/Controller/TextMenu/*"
       ]
     }
   },

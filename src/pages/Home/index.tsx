@@ -1,4 +1,4 @@
-import {  useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { FC, ReactNode, HTMLAttributes, CSSProperties } from "react";
 import css from "./index.module.css";
 import Video from "~components/Video/Video";
@@ -16,8 +16,9 @@ import musicMp4 from "~assets/video/music.mp4";
 import poster from "~assets/poster/poster.jpg";
 import poster2 from "~assets/poster/poster2.jpeg";
 import { nanoid } from "nanoid";
-import {useShowCommentStore} from "~store/showComment.ts";
+import { useShowCommentStore } from "~store/showComment.ts";
 import Comment from "../../components/Comment/index.tsx";
+import { ConfigProvider } from "antd";
 
 const videoData: videoType[] = [
   {
@@ -88,7 +89,7 @@ const Home: FC<MyProps> = function Home() {
   const videoBoxRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState<number>(0);
   const [direct, setDirect] = useState(true);
-  const { commentVisible, setCommentVisible } = useShowCommentStore()
+  const { commentVisible, setCommentVisible } = useShowCommentStore();
   const transRef = useSpringRef();
   const transition = useTransition(index, {
     ref: transRef,
@@ -143,7 +144,7 @@ const Home: FC<MyProps> = function Home() {
         }
         timer.current = setTimeout(() => {
           console.log("inner");
-          setCommentVisible(false)
+          setCommentVisible(false);
           if (e.deltaY > 0) {
             console.log("inner");
             turnUpVideo();
@@ -160,7 +161,16 @@ const Home: FC<MyProps> = function Home() {
   return (
     <div className={css.box}>
       <div className={css.header}>
-        <Header></Header>
+        <ConfigProvider theme={{
+          components:{
+            Tooltip:{
+              colorBgSpotlight:"transparent",
+              boxShadowSecondary:"none"
+            }
+          }
+        }}>
+          <Header></Header>
+        </ConfigProvider>
       </div>
       <div className={`${css.content} flex flex-row`}>
         <div className={css.nav}>
@@ -174,7 +184,7 @@ const Home: FC<MyProps> = function Home() {
             })}
           </div>
         </div>
-        { commentVisible && <Comment />}
+        {commentVisible && <Comment />}
       </div>
     </div>
   );

@@ -121,7 +121,8 @@ export default function Video({ videoData }: { videoData: videoType }) {
             },
             components: {
               Tooltip: {
-                colorBgSpotlight: "#363741",
+                colorBgSpotlight: "transparent",
+                boxShadowSecondary:"none"
               },
             },
           }}

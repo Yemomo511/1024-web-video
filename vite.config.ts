@@ -23,7 +23,7 @@ export default defineConfig({
       less: {
         math: "always",
         globalVars: {
-            primary: "#00B5FF",
+            primary: "#292b35",
             darkPrimary: "#8B979F",
             /**
              * #ffffff

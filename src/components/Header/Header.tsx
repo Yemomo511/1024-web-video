@@ -6,12 +6,13 @@ import ConfigProvider from "antd/es/config-provider";
 import Icon from "~components/Icon/Icon";
 import IconCard from "~components/IconCard/IconCard";
 import poster from "~assets/poster/poster.jpg";
-import { Avatar } from "antd";
-import { useModelStore,modelType } from "~/store/store";
+import { Avatar, Popover, Tooltip } from "antd";
+import { useModelStore, modelType } from "~/store/store";
+import Notice from "~components/Notice/Notice";
 
 export default function Header() {
   const inputRef = useRef<InputRef>(null);
-  const setModel = useModelStore(state=>state.setModel)
+  const setModel = useModelStore((state) => state.setModel);
   const SearchIcon = useCallback((onClick: () => void) => {
     return (
       <button className={css.iconBox} onClick={onClick}>
@@ -55,15 +56,19 @@ export default function Header() {
         <div className={css.optionIconBox}>
           <IconCard title={"更多"} icon={imageUrl.header.list}></IconCard>
         </div>
-        <div className={css.optionIconBox}>
-          <IconCard title={"消息"} icon={imageUrl.header.notice}></IconCard>
-        </div>
-        <div className={css.optionIconBox}
-        onClick={()=>{
-          setModel(modelType.UPLOAD)
-        }}>
-          <IconCard title={"投稿"} icon={imageUrl.header.passVideo}
-          ></IconCard>
+        <Tooltip title={<Notice></Notice>} placement="bottom">
+          <div className={css.optionIconBox}>
+            <IconCard title={"消息"} icon={imageUrl.header.notice}></IconCard>
+          </div>
+        </Tooltip>
+
+        <div
+          className={css.optionIconBox}
+          onClick={() => {
+            setModel(modelType.UPLOAD);
+          }}
+        >
+          <IconCard title={"投稿"} icon={imageUrl.header.passVideo}></IconCard>
         </div>
 
         <Avatar

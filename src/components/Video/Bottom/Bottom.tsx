@@ -7,7 +7,7 @@ import imageUrl from "~/common/image";
 import Icon from "~components/Icon/Icon";
 import { Popover, Slider as SliderAntd, Tooltip } from "antd";
 import TextWithSwitch from "~components/TextWithSwitch/TextWithSwitch";
-import TextMenu from "~components/Controler/TextMenu/TextMenu";
+import TextMenu from "~components/Controller/TextMenu/TextMenu";
 import useVideoConfig from "~/hooks/useVideoConfig";
 import { useFullScreenStore } from "~/store/store";
 import DammuInput from "~components/DammuInput/DammuInput";
