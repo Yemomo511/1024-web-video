@@ -17,6 +17,7 @@ import passVideo from "~assets/icon/Header/passVideo.svg"
 import hot from "~assets/icon/Nav/hot.svg"
 import game from "~assets/icon/Nav/game.svg"
 import uploadVideo from "~assets/icon/Header/uploadVideo.svg"
+import noLoginAvatar from "~assets/icon/Header/noLoginAvatar.svg"
 const imageUrl = {
 //改为import from引入
     video: {
@@ -37,7 +38,8 @@ const imageUrl = {
         notice,
         list,
         passVideo,
-        uploadVideo
+        uploadVideo,
+        noLoginAvatar
     },
     nav:{
         index,
