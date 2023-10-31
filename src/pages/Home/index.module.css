@@ -32,7 +32,6 @@
 .video {
     position: relative;
     height: calc(100vh - 70px);
-    border-radius: 30px;
     overflow: hidden;
     min-width: 300px;
     flex: 1 1 0%;

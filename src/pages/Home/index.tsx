@@ -177,7 +177,7 @@ const Home: FC<MyProps> = function Home() {
         <div className={css.nav}>
           <Nav></Nav>
         </div>
-        <div className={css.video} ref={videoBoxRef}>
+        <div className={`${css.video} ${commentVisible ? 'rounded-l-[30px]' : 'rounded-[30px]'}`} ref={videoBoxRef}>
           <div className={css.transBox}>
             {transition((style, item) => {
               const Page = pages[item];
