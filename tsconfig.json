@@ -105,6 +105,12 @@
       ],
       "~UserCard/*": [
         "src/components/UserCard/*"
+      ],
+      "~Toast/*": [
+        "src/components/Toast/*"
+      ],
+      "~Login/*": [
+        "src/components/Login/*"
       ]
     }
   },
