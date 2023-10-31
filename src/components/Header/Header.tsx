@@ -9,6 +9,7 @@ import poster from "~assets/poster/poster.jpg";
 import { Avatar, Popover, Tooltip } from "antd";
 import { useModelStore, modelType } from "~/store/store";
 import Notice from "~components/Notice/Notice";
+import UserCard from "~components/UserCard/UserCard";
 
 export default function Header() {
   const inputRef = useRef<InputRef>(null);
@@ -70,14 +71,15 @@ export default function Header() {
         >
           <IconCard title={"投稿"} icon={imageUrl.header.passVideo}></IconCard>
         </div>
-
-        <Avatar
-          src={poster}
-          style={{
-            width: 40,
-            height: 40,
-          }}
-        ></Avatar>
+        <Tooltip title={<UserCard userId="111"></UserCard>} placement="bottom">
+          <Avatar
+            src={poster}
+            style={{
+              width: 40,
+              height: 40,
+            }}
+          ></Avatar>
+        </Tooltip>
       </div>
     );
   }, []);

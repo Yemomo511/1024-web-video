@@ -102,6 +102,9 @@
       ],
       "~TextMenu/*": [
         "src/components/Controller/TextMenu/*"
+      ],
+      "~UserCard/*": [
+        "src/components/UserCard/*"
       ]
     }
   },

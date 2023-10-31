@@ -2,14 +2,18 @@ import React from 'react'
 import css from "./index.module.less"
 export default function Icon({
     src,
-    onPress=()=>{}
+    onPress=()=>{},
+    IconStyle={}
 }:{
     src:string,
-    onPress?:()=>void
+    onPress?:()=>void,
+    IconStyle?:React.CSSProperties
 }) {
   return (
     <>
-     <img src={src} onClick={onPress} alt="" className={css.icon}></img> 
+     <img src={src} 
+     style={IconStyle}
+     onClick={onPress} alt="" className={css.icon}></img> 
     </>
   )
 }

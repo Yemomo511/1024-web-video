@@ -55,9 +55,7 @@ export default defineConfig({
              * #ff5f71
              */
             red: "#FD7E7E",
-            /**
-             * #fe89ff
-             */
+            darkRed:"#ff5f71",
             purple: "#B888FC",
 
             green: "#82DD5F",

@@ -13,9 +13,12 @@ interface MyProps extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;
   icon: string;
   title: string;
+  textStyle?: React.CSSProperties;
+  iconStyle?: React.CSSProperties;
+  flexStyle?: React.CSSProperties;
 }
 const IconCard: FC<MyProps> = memo((props) => {
-  const { icon, title } = props;
+  const { icon, title,textStyle={},iconStyle={},flexStyle={}} = props;
   const boxRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<HTMLDivElement>(null);
@@ -44,14 +47,20 @@ const IconCard: FC<MyProps> = memo((props) => {
     }
   }, [boxRef]);
   return (
-    <div className={css.box} ref={boxRef}>
+    <div
+    style={flexStyle} 
+    className={css.box} 
+    ref={boxRef}
+    >
       <div ref={iconRef} style={{
         opacity:0.4
       }}>
-        <Icon src={icon}></Icon>
+        <Icon IconStyle={iconStyle} src={icon}></Icon>
       </div>
 
-      <div className={css.text} ref={textRef}>
+      <div 
+      style={textStyle}
+      className={css.text} ref={textRef}>
         {title}
       </div>
     </div>
