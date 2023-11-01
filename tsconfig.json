@@ -28,26 +28,20 @@
       "~assets/*": [
         "src/assets/*"
       ],
+      "~common/*": [
+        "src/common/*"
+      ],
       "~components/*": [
         "src/components/*"
-      ],
-      "~pages/*": [
-        "src/pages/*"
-      ],
-      "~/*": [
-        "src/*"
-      ],
-      "~utils/*": [
-        "src/utils/*"
-      ],
-      "~routes/*": [
-        "src/routes/*"
       ],
       "~hooks/*": [
         "src/hooks/*"
       ],
-      "~common/*": [
-        "src/common/*"
+      "~pages/*": [
+        "src/pages/*"
+      ],
+      "~routes/*": [
+        "src/routes/*"
       ],
       "~store/*": [
         "src/store/*"
@@ -55,99 +49,11 @@
       "~types/*": [
         "src/types/*"
       ],
-      "~MyFocus/*": [
-        "src/pages/MyHome/*"
+      "~utils/*": [
+        "src/utils/*"
       ],
-      "~MyFollow/*": [
-        "src/pages/MyHome/*"
-      ],
-      "~png/*": [
-        "src/assets/png/*"
-      ],
-      "~Follow/*": [
-        "src/pages/Follow/*"
-      ],
-      "~Game/*": [
-        "src/pages/Game/*"
-      ],
-      "~Hot/*": [
-        "src/pages/Hot/*"
-      ],
-      "~MyHome/*": [
-        "src/pages/MyHome/*"
-      ],
-      "~Recommend/*": [
-        "src/pages/Recommend/*"
-      ]
-    }
-  },
-  "include": [
-    "src"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
-}"~hooks/*": [
-        "src/hooks/*"
-      ],
-      "~common/*": [
-        "src/common/*"
-      ],
-      "~store/*": [
-        "src/store/*"
-      ],
-      "~types/*": [
-        "src/types/*"
-      ],
-      "~Notice/*": [
-        "src/components/Notice/*"
-      ],
-      "~Controller/*": [
-        "src/components/Controller/*"
-      ],
-      "~TextMenu/*": [
-        "src/components/Controller/TextMenu/*"
-      ],
-      "~UserCard/*": [
-        "src/components/UserCard/*"
-      ],
-      "~Toast/*": [
-        "src/components/Toast/*"
-      ],
-      "~Login/*": [
-        "src/components/Login/*"
-      ],
-      "~MyFocus/*": [
-        "src/pages/MyHome/*"
-      ],
-      "~Video/*": [
-        "src/pages/Video/*"
-      ],
-      "~MyFollo/*": [
-        "src/pages/MyFollo/*"
-      ],
-      "~MyFollow/*": [
-        "src/pages/MyHome/*"
-      ],
-      "~MyHome/*": [
-        "src/pages/MyHome/*"
-      ],
-      "~png/*": [
-        "src/assets/png/*"
-      ],
-      "~Follow/*": [
-        "src/pages/Follow/*"
-      ],
-      "~Game/*": [
-        "src/pages/Game/*"
-      ],
-      "~Hot/*": [
-        "src/pages/Hot/*"
-      ],
-      "~Recommend/*": [
-        "src/pages/Recommend/*"
+      "~/*": [
+        "src/*"
       ]
     }
   },

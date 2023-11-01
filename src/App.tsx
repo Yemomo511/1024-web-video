@@ -4,43 +4,51 @@ import { useRoutes } from "react-router-dom";
 import { ConfigProvider, Modal, Popover } from "antd";
 import PassVideo from "~components/PassVideo/PassVideo";
 import { useModelStore, modelType } from "./store/store";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { useEffect } from "react";
+import { QueryClientProvider,QueryClient } from "react-query";
 function App() {
   const routes = useRoutes(route);
   const { model, setModel } = useModelStore((state) => state);
   useEffect(() => {
     console.log("change");
   }, [model]);
+  const client = new QueryClient()
   return (
-    <div className="css-all-box">
-      {routes}
-      <ConfigProvider
-        theme={{
-          components: {
-            Modal: {
-              contentBg: "#292b35",
+    <QueryClientProvider client={client}>
+      <div className="css-all-box">
+        <ReactQueryDevtools
+        initialIsOpen={false}
+        position="top-right"
+        ></ReactQueryDevtools>
+        {routes}
+        <ConfigProvider
+          theme={{
+            components: {
+              Modal: {
+                contentBg: "#292b35",
+              },
+              Upload: {
+                colorPrimary: "white",
+                actionsColor: "white",
+              },
             },
-            Upload: {
-              colorPrimary: "white",
-              actionsColor: "white",
-              
-            },
-          },
-        }}
-      >
-        {
-          <Modal
-            open={model == modelType.UPLOAD}
-            footer={null}
-            onCancel={() => {
-              setModel(modelType.DEFAULT);
-            }}
-          >
-            <PassVideo></PassVideo>
-          </Modal>
-        }
-      </ConfigProvider>
-    </div>
+          }}
+        >
+          {
+            <Modal
+              open={model == modelType.UPLOAD}
+              footer={null}
+              onCancel={() => {
+                setModel(modelType.DEFAULT);
+              }}
+            >
+              <PassVideo></PassVideo>
+            </Modal>
+          }
+        </ConfigProvider>
+      </div>
+    </QueryClientProvider>
   );
 }
 

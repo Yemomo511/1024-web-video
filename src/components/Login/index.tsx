@@ -13,6 +13,7 @@ import {
 } from "@ant-design/icons";
 import { Checkbox, ConfigProvider } from "antd";
 import { lightColors } from "~/common/color";
+import loginApi from "~/utils/network/login";
 
 interface MyProps extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;
@@ -41,12 +42,19 @@ const Login: FC<MyProps> = memo(({ hide }) => {
       toast.error("请勾选下方同意协议!");
       return;
     }
+    const fetchData: loginDataType={
+        PhoneNumber:"17773638721",
+        passwd:data.password,
+    }
     //  等待后端登录接口
-    setTimeout(() => {
-      console.log(data);
-      toast.success("登录成功!");
-      hide();
-    }, 2000);
+    toast.promise(loginApi.fetchLogin(fetchData),{
+        loading:"登录中...",
+        success:(data)=>{
+          //一些其他处理  
+          return "登录成功"
+        },
+        error:(err)=>"登录失败"
+    })
   };
   return (
     <div className="flex flrex-row w-[25rem] h-[25rem]">
