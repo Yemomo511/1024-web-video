@@ -33,12 +33,12 @@ const Login: FC<MyProps> = memo(({ hide }) => {
     },
   });
   const onSubmit: SubmitHandler<UserInputs> = (data) => {
-    if (!checked) {
-      toast.error("请勾选下方同意协议!");
+    if (!data.userName.trim() || !data.password.trim()) {
+      toast.error("请填写完整信息!");
       return;
     }
-    if (!data.userName || !data.password) {
-      toast.error("请填写完整信息!");
+    if (!checked) {
+      toast.error("请勾选下方同意协议!");
       return;
     }
     //  等待后端登录接口
@@ -100,9 +100,9 @@ const Login: FC<MyProps> = memo(({ hide }) => {
                 点击即同意《生菜协议》
               </Checkbox>
               <div>
-                <p 
+                <p
                 onClick={()=>{
-                    
+
                 }}
                 className="text-xs text-blue-400 cursor-pointer hover:underline">
                     点我注册
