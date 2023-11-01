@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import css from "./index.module.less";
 import Icon from "~components/Icon/Icon";
+import {useLocation} from "react-router-dom";
 
 interface MyProps extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;
@@ -22,6 +23,11 @@ const IconCard: FC<MyProps> = memo((props) => {
   const boxRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<HTMLDivElement>(null);
+  const { pathname } = useLocation()
+  useEffect(() => {
+    // 待抽取整体布局 根据 pathname 处理 Nav 高亮
+    console.log(pathname);
+  }, [pathname]);
   useEffect(() => {
     //开启监听
     if (boxRef.current) {
@@ -29,7 +35,7 @@ const IconCard: FC<MyProps> = memo((props) => {
       boxRef.current.addEventListener("mouseenter", () => {
         if (textRef.current) {
           textRef.current.style.color = "white";
-         
+
         }
         if (iconRef.current){
             iconRef.current.style.opacity = "1"
@@ -48,8 +54,8 @@ const IconCard: FC<MyProps> = memo((props) => {
   }, [boxRef]);
   return (
     <div
-    style={flexStyle} 
-    className={css.box} 
+    style={flexStyle}
+    className={css.box}
     ref={boxRef}
     >
       <div ref={iconRef} style={{
@@ -58,7 +64,7 @@ const IconCard: FC<MyProps> = memo((props) => {
         <Icon IconStyle={iconStyle} src={icon}></Icon>
       </div>
 
-      <div 
+      <div
       style={textStyle}
       className={css.text} ref={textRef}>
         {title}
