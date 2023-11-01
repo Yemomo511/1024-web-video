@@ -82,9 +82,11 @@ export default function Header() {
           <IconCard title={"投稿"} icon={imageUrl.header.passVideo}></IconCard>
         </div>
         <Tooltip
-            title={<UserCard userId="111"></UserCard>}
+            title={
+            isLogin?
+            <UserCard userId="111"></UserCard>
+            :<p>请先登录</p>}
             placement="bottom"
-            open={isLogin}
             className="cursor-pointer"
         >
             {isLogin
@@ -99,7 +101,7 @@ export default function Header() {
     <>
         <div className={css.box}>
             <div className={css.logoBox}>
-                <img src={imageUrl.logo} className={css.logo}></img>
+                <img src={imageUrl.logo} className={css.logo} alt=""></img>
                 <div className={css.logoText}>生菜视频</div>
             </div>
             {Search}

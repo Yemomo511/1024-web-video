@@ -23,6 +23,7 @@ function App() {
             Upload: {
               colorPrimary: "white",
               actionsColor: "white",
+              
             },
           },
         }}
