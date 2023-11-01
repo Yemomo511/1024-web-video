@@ -2,41 +2,45 @@ import React from "react";
 import css from "./index.module.less";
 import NavCard from "~components/IconCard/IconCard";
 import imageUrl from "~/common/image";
-import {NavLink} from "react-router-dom";
-const navList = [
-    {
-        title: "首页",
-        path:'/home',
-        icon: imageUrl.nav.index,
-    },
-    {
-        title:"关注",
-        path:'/follow',
-        icon:imageUrl.nav.follow
-    },
-    {
-        title:"热门",
-        path:'/hot',
-        icon:imageUrl.nav.hot
-    },
-    {
-        title:"游戏",
-        path:'/game',
-        icon:imageUrl.nav.game
-    }
-]
+import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 export default function Nav() {
+  const navigate = useNavigate();
+
+  const navList = [
+    {
+      title: "首页",
+      icon: imageUrl.nav.index,
+      onClick: () => navigate("/home"),
+    },
+    {
+      title: "我的",
+      icon: imageUrl.nav.follow,
+      onClick: () => navigate("/home/my-home/123"),
+    },
+    {
+      title: "热门",
+      icon: imageUrl.nav.hot,
+      onClick: () => {},
+    },
+    {
+      title: "游戏",
+      icon: imageUrl.nav.game,
+      onClick: () => {},
+    },
+  ];
   return (
     <div className={css.nav}>
-      {
-        navList.map((item,index)=>{
-          return (
-              <NavLink to={item.path}>
-                  <NavCard key={index} title={item.title} icon={item.icon}></NavCard>
-              </NavLink>
-          )
-        })
-      }
+      {navList.map((item, index) => {
+        return (
+          <NavCard
+            onClick={item.onClick}
+            key={index}
+            title={item.title}
+            icon={item.icon}
+          ></NavCard>
+        );
+      })}
     </div>
   );
 }

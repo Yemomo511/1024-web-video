@@ -4,7 +4,12 @@ import css from "./index.module.less";
 import imageUrl from "~/common/image";
 import avatar from "~assets/poster/poster.jpg"
 import { lightColors } from "~/common/color";
-const data = []
+interface NoticeDataType{
+    name:string,
+    avatar:string,
+    noticeType:string
+}
+const data = [] as NoticeDataType[]
 for (let i = 0; i < 10; i++) {
     data.push({
         name: '叶墨沫',
@@ -51,7 +56,7 @@ const Notice: FC<Props> = () => {
 
       <div className={css.noticeScroll}>
         {data.map((item,index)=>{
-            return <Card {...item}></Card>
+            return <Card key={index} {...item}></Card>
         })}
       </div>
     </div>

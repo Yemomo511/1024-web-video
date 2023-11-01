@@ -56,7 +56,7 @@ export default function Video({ videoData }: { videoData: videoType }) {
   }, []);
   //判断是否需要全屏
   useEffect(() => {
-    const component = document.getElementById("playercomponent");
+    const component = document.getElementById(`playercomponent-${videoData.id}`);
     if (component) {
       if (isFull) {
         component.requestFullscreen();
@@ -125,7 +125,6 @@ export default function Video({ videoData }: { videoData: videoType }) {
                 colorBgSpotlight: "transparent",
                 boxShadowSecondary:"none"
               },
-             
             },
           }}
         >

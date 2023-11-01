@@ -37,52 +37,59 @@
       "~/*": [
         "src/*"
       ],
-      "~poster/*": [
-        "src/assets/poster/*"
-      ],
       "~utils/*": [
         "src/utils/*"
-      ],
-      "~api/*": [
-        "src/utils/api/*"
-      ],
-      "~video/*": [
-        "src/utils/video/*"
-      ],
-      "~page/*": [
-        "src/page/*"
-      ],
-      "~Slider/*": [
-        "src/components/Slider/*"
-      ],
-      "~icon/*": [
-        "src/assets/icon/*"
-      ],
-      "~network/*": [
-        "src/utils/network/*"
-      ],
-      "~Icon/*": [
-        "src/components/Icon/*"
-      ],
-      "~TextWithS/*": [
-        "src/components/TextWithS/*"
-      ],
-      "~TextWithSwitch/*": [
-        "src/components/TextWithSwitch/*"
       ],
       "~routes/*": [
         "src/routes/*"
       ],
-      "~Home/*": [
-        "src/pages/Home/*"
-      ],
-      "~My/*": [
-        "src/pages/My/*"
-      ],
-      "~Popup/*": [
-        "src/components/Popup/*"
-      ],
       "~hooks/*": [
+        "src/hooks/*"
+      ],
+      "~common/*": [
+        "src/common/*"
+      ],
+      "~store/*": [
+        "src/store/*"
+      ],
+      "~types/*": [
+        "src/types/*"
+      ],
+      "~MyFocus/*": [
+        "src/pages/MyHome/*"
+      ],
+      "~MyFollow/*": [
+        "src/pages/MyHome/*"
+      ],
+      "~png/*": [
+        "src/assets/png/*"
+      ],
+      "~Follow/*": [
+        "src/pages/Follow/*"
+      ],
+      "~Game/*": [
+        "src/pages/Game/*"
+      ],
+      "~Hot/*": [
+        "src/pages/Hot/*"
+      ],
+      "~MyHome/*": [
+        "src/pages/MyHome/*"
+      ],
+      "~Recommend/*": [
+        "src/pages/Recommend/*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}"~hooks/*": [
         "src/hooks/*"
       ],
       "~common/*": [
@@ -111,6 +118,36 @@
       ],
       "~Login/*": [
         "src/components/Login/*"
+      ],
+      "~MyFocus/*": [
+        "src/pages/MyHome/*"
+      ],
+      "~Video/*": [
+        "src/pages/Video/*"
+      ],
+      "~MyFollo/*": [
+        "src/pages/MyFollo/*"
+      ],
+      "~MyFollow/*": [
+        "src/pages/MyHome/*"
+      ],
+      "~MyHome/*": [
+        "src/pages/MyHome/*"
+      ],
+      "~png/*": [
+        "src/assets/png/*"
+      ],
+      "~Follow/*": [
+        "src/pages/Follow/*"
+      ],
+      "~Game/*": [
+        "src/pages/Game/*"
+      ],
+      "~Hot/*": [
+        "src/pages/Hot/*"
+      ],
+      "~Recommend/*": [
+        "src/pages/Recommend/*"
       ]
     }
   },

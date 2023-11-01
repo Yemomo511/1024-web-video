@@ -57,7 +57,16 @@ const Login: FC<MyProps> = memo(({ hide }) => {
         <ConfigProvider
           theme={{
             token: {},
-          }}
+            components:{
+                Input:{
+                    activeBg:"none",
+                    
+                }
+            }
+          }
+          
+        }
+
         >
           <form
             onSubmit={handleSubmit(onSubmit)}

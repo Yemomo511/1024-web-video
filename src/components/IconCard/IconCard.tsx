@@ -17,9 +17,10 @@ interface MyProps extends HTMLAttributes<HTMLElement> {
   textStyle?: React.CSSProperties;
   iconStyle?: React.CSSProperties;
   flexStyle?: React.CSSProperties;
+  onClick?:()=>void
 }
 const IconCard: FC<MyProps> = memo((props) => {
-  const { icon, title,textStyle={},iconStyle={},flexStyle={}} = props;
+  const { icon, title,textStyle={},iconStyle={},flexStyle={},onClick} = props;
   const boxRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<HTMLDivElement>(null);
@@ -57,6 +58,7 @@ const IconCard: FC<MyProps> = memo((props) => {
     style={flexStyle}
     className={css.box}
     ref={boxRef}
+    onClick={onClick}
     >
       <div ref={iconRef} style={{
         opacity:0.4
