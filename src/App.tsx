@@ -1,7 +1,7 @@
 import "./App.css";
 import { route } from "~routes/index";
 import { useRoutes } from "react-router-dom";
-import { ConfigProvider, Modal, Popover } from "antd";
+import { ConfigProvider, Modal } from "antd";
 import PassVideo from "~components/PassVideo/PassVideo";
 import { useModelStore, modelType } from "./store/store";
 import { ReactQueryDevtools } from "react-query/devtools";

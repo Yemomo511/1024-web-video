@@ -1,15 +1,11 @@
-import React, { useEffect, useMemo, useReducer, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import style from "./index.module.less";
-import FlvJs from "flv.js";
 import DPlayer from "dplayer";
-import mp4 from "~assets/video/loli.mp4";
-import poster from "~assets/poster/poster.jpg";
 import Buttom from "~components/Video/Bottom/Bottom";
 import { useFullScreenStore } from "~/store/store";
 import { ConfigProvider } from "antd";
 import { videoType } from "~/types/type";
-import { useModelStore } from "~/store/store";
-import { lightColors } from "~/common/color";
+
 //定义渲染模式
 
 //得用canvas播放视频

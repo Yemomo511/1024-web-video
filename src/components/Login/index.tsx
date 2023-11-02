@@ -1,8 +1,7 @@
-import React, { memo, useState } from "react";
+import { memo, useState } from "react";
 import type { FC, ReactNode, HTMLAttributes } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import welcome from "~assets/welcome.png";
 import Input from "antd/es/input/Input";
 import {
   EyeInvisibleOutlined,
@@ -12,7 +11,6 @@ import {
   CloseOutlined,
 } from "@ant-design/icons";
 import { Checkbox, ConfigProvider } from "antd";
-import { lightColors } from "~/common/color";
 import loginApi from "~/utils/network/login";
 
 interface MyProps extends HTMLAttributes<HTMLElement> {
@@ -98,6 +96,7 @@ const Login: FC<MyProps> = memo(({ hide }) => {
               name="password"
               control={control}
               render={({ field }) => (
+                //@ts-ignore
                 <Input.Password
                   placeholder="密码"
                   size="large"

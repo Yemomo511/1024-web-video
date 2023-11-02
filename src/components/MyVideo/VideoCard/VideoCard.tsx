@@ -1,4 +1,3 @@
-import React from "react";
 import { videoType } from "~types/type";
 import css from "./index.module.less";
 import like from "~assets/icon/VideoCard/videoLike.svg";

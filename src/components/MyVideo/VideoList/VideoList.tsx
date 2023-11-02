@@ -1,4 +1,3 @@
-import React from "react";
 import data from "./data";
 import css from "./index.module.less";
 import VideoCard from "../VideoCard/VideoCard";
