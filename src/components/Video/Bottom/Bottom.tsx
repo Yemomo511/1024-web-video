@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useMemo, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import css from "./index.module.less";
 import DPlayer, { DPlayerEvents } from "dplayer";
 import Slider from "~components/Slider/Slider";
@@ -24,6 +24,12 @@ const Bottom = forwardRef(function Bottom(
   const [isPause, setIsPause] = useState(false);
   const volumeRef = useRef<HTMLDivElement>(null);
   const { setIsFull, isFull } = useFullScreenStore((state) => state);
+  const boxRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  useImperativeHandle(ref,()=>({
+    boxRef:boxRef.current,
+    sliderRef:sliderRef.current,
+  }))
   useEffect(() => {
     if (playerRef) {
       playerRef.video.muted = true;
@@ -139,10 +145,10 @@ const Bottom = forwardRef(function Bottom(
 
   return (
     <div className={css.box}>
-      <div className={css.sliderBar}>
+      <div className={css.sliderBar} ref={sliderRef}>
         <SliderIcon avatar={poster} username="叶墨沫"></SliderIcon>
       </div>
-      <div className={css.bottomBox} ref={ref}>
+      <div className={css.bottomBox} ref={boxRef}>
         <div className={css.progressBar}>
           <div className={css.sliderBox}>
             <Slider
