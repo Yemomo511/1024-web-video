@@ -3,11 +3,10 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #292b35;
+    background-image: linear-gradient(to bottom, #3e0d59, #36165c, #2d1d5d, #24225e, #1b265e, #1a285b, #1a2a57, #1b2b53, #202b4b, #242b44, #272b3c, #292b35);
 }
 
 .header {
-    background-color: #292b35;
     box-sizing: border-box;
     height: 70px;
     width: 100%;
@@ -29,3 +28,8 @@
     min-width: 50px;
 }
 
+.content-box{
+    height: calc(100vh - 70px);
+    flex: 1 1 0%;
+    min-width: 800px;
+}

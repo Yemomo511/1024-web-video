@@ -54,6 +54,9 @@
       ],
       "~/*": [
         "src/*"
+      ],
+      "~MyVideo/*": [
+        "src/components/MyVideo/*"
       ]
     }
   },

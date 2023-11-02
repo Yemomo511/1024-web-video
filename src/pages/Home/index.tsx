@@ -34,7 +34,9 @@ const Home: FC<MyProps> = function Home() {
         <div className={css.nav}>
           <Nav></Nav>
         </div>
-        <Outlet/>
+        <div className={`${css.contentBox}`}>
+          <Outlet />
+        </div>
       </div>
     </div>
   );

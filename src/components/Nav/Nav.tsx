@@ -21,12 +21,12 @@ export default function Nav() {
     {
       title: "热门",
       icon: imageUrl.nav.hot,
-      onClick: () => {},
+      onClick: () => {navigate("/home/hot")},
     },
     {
       title: "游戏",
       icon: imageUrl.nav.game,
-      onClick: () => {},
+      onClick: () => {navigate("/home/game")},
     },
   ];
   return (

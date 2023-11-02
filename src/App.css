@@ -20,3 +20,12 @@
 .commentScroll::-webkit-scrollbar {
     display: none;
 }
+.css-my-video-tab > .ant-tabs-content-holder{
+    overflow: scroll;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+.css-my-video-tab > .ant-tabs-content-holder::-webkit-scrollbar {
+    display: none;
+}
+

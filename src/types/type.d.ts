@@ -13,7 +13,7 @@ export interface videoType{
     userId:string,
     stared:number,
     liked:number,
-    comments:contentType[]
+    comments:commentType[]
 }
 
 export interface userType{
