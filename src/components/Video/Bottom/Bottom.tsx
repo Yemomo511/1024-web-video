@@ -20,7 +20,6 @@ const Bottom = forwardRef(function Bottom(
   { playerRef }: { playerRef: DPlayer | null },
   ref: any
 ) {
-  console.log("button page")
   const [currentTime, setCurrentTime] = useState(0);
   const [isPause, setIsPause] = useState(false);
   const volumeRef = useRef<HTMLDivElement>(null);
