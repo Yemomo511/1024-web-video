@@ -54,7 +54,6 @@ const Login: FC<MyProps> = memo(({ hide }) => {
         error:(err)=>"登录失败"
     })
   };
-  console.log("login")
   return (
     <div className="flex flrex-row w-[25rem] h-[25rem]">
       <div className="flex flex-1 flex-col px-5 gap-5 bg-[#ffffff] rounded-[8px] rounded-l-3xl">

@@ -38,6 +38,7 @@ const Bottom = forwardRef(function Bottom(
   }, [playerRef, isPause]);
 
   const allTimeState = useMemo(() => {
+    console.log("获取")
     if (playerRef) {
       if (Number.isNaN(playerRef.video.duration)) {
         return 0;
@@ -53,13 +54,14 @@ const Bottom = forwardRef(function Bottom(
   //开启监听，轮询持续时间进行刷新
   useEffect(() => {
     if (playerRef) {
-      console.log(playerRef);
       //忽视错误 ts注释存在问题 考虑后续打个patch
+      
       // @ts-ignore
       playerRef.on("play", () => {
         setIsPause(false);
         timer = setInterval(() => {
           if (playerRef) {
+            console.log("player")
             let duration = Math.floor(playerRef.video.currentTime);
             setCurrentTime(duration);
           }
@@ -81,6 +83,7 @@ const Bottom = forwardRef(function Bottom(
       } else {
         if (playerRef.video.paused) {
           playerRef.play();
+          console.log("play")
         }
       }
     }

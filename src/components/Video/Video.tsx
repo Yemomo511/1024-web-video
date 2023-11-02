@@ -31,8 +31,8 @@ export default function Video({ videoData }: { videoData: videoType }) {
           pic: videoData.poster,
         },
         playbackSpeed: [1, 1.25, 1.5, 2],
-        autoplay: true,
-        preload: "metadata",
+        autoplay: false,
+        preload: "auto",
         volume: 0.7,
         //支持airplay
         airplay: true,

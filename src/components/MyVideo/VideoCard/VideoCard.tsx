@@ -2,7 +2,6 @@ import { videoType } from "~types/type";
 import css from "./index.module.less";
 import like from "~assets/icon/VideoCard/videoLike.svg";
 export default function VideoCard({ data }: { data: videoType }) {
-    console.log(data);
   return (
     <div className={css.box}>
       <div className={css.posterBox}>

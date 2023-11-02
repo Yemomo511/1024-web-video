@@ -13,7 +13,6 @@ function App() {
     console.log("change");
   }, [model]);
   const client = new QueryClient()
-  console.log("queryLient");
   return (
     <QueryClientProvider client={client}>
       <div className="css-all-box">
