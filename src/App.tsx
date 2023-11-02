@@ -17,10 +17,6 @@ function App() {
   return (
     <QueryClientProvider client={client}>
       <div className="css-all-box">
-        <ReactQueryDevtools
-        initialIsOpen={false}
-        position="top-right"
-        ></ReactQueryDevtools>
         {routes}
         <ConfigProvider
           theme={{
