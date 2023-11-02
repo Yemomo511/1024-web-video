@@ -125,15 +125,17 @@ const Bottom = forwardRef(function Bottom(
             step={0.01}
             vertical
             onChange={(state: number) => {
+              
               if (playerRef) {
-                playerRef.video.volume = state;
+                console.log("change")
+                playerRef.volume(state,true,false);
               }
             }}
           ></SliderAntd>
         </ConfigProvider>
       </div>
     );
-  }, []);
+  }, [playerRef]);
 
   return (
     <div className={css.box}>

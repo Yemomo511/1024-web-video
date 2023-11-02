@@ -51,6 +51,10 @@ export default function Video({ videoData }: { videoData: videoType }) {
           id: "1",
           api: "",
         },
+        subtitle:{
+          url:"",
+          bottom:"100px"
+        }
       })
     );
   }, []);
