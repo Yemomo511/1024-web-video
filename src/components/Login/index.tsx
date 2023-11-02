@@ -2,7 +2,7 @@ import { memo, useState } from "react";
 import type { FC, ReactNode, HTMLAttributes } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import Input from "antd/es/input/Input";
+import Input from "antd/es/input";
 import {
   EyeInvisibleOutlined,
   EyeTwoTone,
@@ -54,7 +54,7 @@ const Login: FC<MyProps> = memo(({ hide }) => {
         error:(err)=>"登录失败"
     })
   };
-  console.log("login error")
+  console.log("login")
   return (
     <div className="flex flrex-row w-[25rem] h-[25rem]">
       <div className="flex flex-1 flex-col px-5 gap-5 bg-[#ffffff] rounded-[8px] rounded-l-3xl">
@@ -98,10 +98,12 @@ const Login: FC<MyProps> = memo(({ hide }) => {
               control={control}
               render={({ field }) => (
                 
-                <Input
+                <Input.Password
                   placeholder="密码"
                   size="large"
-                  
+                  iconRender={(visible: boolean) =>
+                    visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                  }
                   prefix={<LockOutlined />}
                   {...field}
                 />
