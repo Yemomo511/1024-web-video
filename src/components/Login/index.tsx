@@ -98,12 +98,10 @@ const Login: FC<MyProps> = memo(({ hide }) => {
               control={control}
               render={({ field }) => (
                 
-                <Input.Password
+                <Input
                   placeholder="密码"
                   size="large"
-                  iconRender={(visible: boolean) =>
-                    visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                  }
+                  
                   prefix={<LockOutlined />}
                   {...field}
                 />
