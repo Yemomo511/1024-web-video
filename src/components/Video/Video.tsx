@@ -22,7 +22,6 @@ export default function Video({ videoData }: { videoData: videoType }) {
   } | null>();
   useEffect(() => {
     //开启一系列事件监听
-    console.log("dplayer before");
     setPlayerRef(
       new DPlayer({
         container: document.getElementById(`player-${videoData.id}`),
@@ -49,7 +48,6 @@ export default function Video({ videoData }: { videoData: videoType }) {
         ],
       })
     );
-    console.log("dplayer after");
   }, []);
   //判断是否需要全屏
   useEffect(() => {

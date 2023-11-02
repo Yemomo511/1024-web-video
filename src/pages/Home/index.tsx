@@ -9,6 +9,7 @@ interface MyProps extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;
 }
 const Home: FC<MyProps> = function Home() {
+  console.log("home")
   return (
     <div className={css.box}>
       <div className={css.header}>

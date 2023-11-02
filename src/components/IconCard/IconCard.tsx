@@ -20,6 +20,7 @@ interface MyProps extends HTMLAttributes<HTMLElement> {
   onClick?:()=>void
 }
 const IconCard: FC<MyProps> = memo((props) => {
+  console.log("IconCard")
   const { icon, title,textStyle={},iconStyle={},flexStyle={},onClick} = props;
   const boxRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);

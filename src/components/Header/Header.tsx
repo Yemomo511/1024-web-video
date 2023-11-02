@@ -16,6 +16,7 @@ import Login from "~components/Login";
 
 
 export default function Header() {
+  console.log("Header")
   const inputRef = useRef<InputRef>(null);
   const setModel = useModelStore((state) => state.setModel);
   const { isLogin } = useLoginStore()
