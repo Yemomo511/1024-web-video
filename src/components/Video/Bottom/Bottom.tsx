@@ -1,11 +1,11 @@
-import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import css from "./index.module.less";
-import DPlayer, { DPlayerEvents } from "dplayer";
+import DPlayer from "dplayer";
 import Slider from "~components/Slider/Slider";
 import { stringWithTime } from "~/utils/api/common";
 import imageUrl from "~/common/image";
 import Icon from "~components/Icon/Icon";
-import { ConfigProvider, Popover, Slider as SliderAntd, Tooltip } from "antd";
+import { ConfigProvider, Slider as SliderAntd, Tooltip } from "antd";
 import TextWithSwitch from "~components/TextWithSwitch/TextWithSwitch";
 import TextMenu from "~components/Controller/TextMenu/TextMenu";
 import useVideoConfig from "~/hooks/useVideoConfig";
@@ -20,6 +20,7 @@ const Bottom = forwardRef(function Bottom(
   { playerRef }: { playerRef: DPlayer | null },
   ref: any
 ) {
+  console.log("button page")
   const [currentTime, setCurrentTime] = useState(0);
   const [isPause, setIsPause] = useState(false);
   const volumeRef = useRef<HTMLDivElement>(null);
@@ -205,4 +206,5 @@ const Bottom = forwardRef(function Bottom(
     </div>
   );
 });
+
 export default Bottom;

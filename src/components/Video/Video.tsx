@@ -22,6 +22,7 @@ export default function Video({ videoData }: { videoData: videoType }) {
   } | null>();
   useEffect(() => {
     //开启一系列事件监听
+    console.log("dplayer before");
     setPlayerRef(
       new DPlayer({
         container: document.getElementById(`player-${videoData.id}`),
@@ -46,16 +47,9 @@ export default function Video({ videoData }: { videoData: videoType }) {
             click: () => {},
           },
         ],
-        danmaku: {
-          id: "1",
-          api: "",
-        },
-        subtitle: {
-          url: "",
-          bottom: "100px",
-        },
       })
     );
+    console.log("dplayer after");
   }, []);
   //判断是否需要全屏
   useEffect(() => {
@@ -75,58 +69,58 @@ export default function Video({ videoData }: { videoData: videoType }) {
   }, [isFull]);
   //全屏时增加一些监听
   const time = useRef<number | null>(null);
-  useEffect(()=>{
-    if (isFull && bottomRef.current && playerBoxRef.current){
-      playerBoxRef.current.addEventListener("mousemove",()=>{
-        if (time.current){
-          clearTimeout(time.current)
+  useEffect(() => {
+    if (isFull && bottomRef.current && playerBoxRef.current) {
+      playerBoxRef.current.addEventListener("mousemove", () => {
+        if (time.current) {
+          clearTimeout(time.current);
         }
-        if (bottomRef.current){
-          bottomRef.current.sliderRef.style.opacity = "1"
+        if (bottomRef.current) {
+          bottomRef.current.sliderRef.style.opacity = "1";
         }
-        time.current = setTimeout(()=>{
-          if (bottomRef.current){
-            bottomRef.current.sliderRef.style.opacity = "0"
+        time.current = setTimeout(() => {
+          if (bottomRef.current) {
+            bottomRef.current.sliderRef.style.opacity = "0";
           }
-        },4000)
-      })
+        }, 4000);
+      });
       //更高一级的监听
-      bottomRef.current.sliderRef.addEventListener("mousemove",()=>{
-        if (time.current){
-          clearTimeout(time.current)
+      bottomRef.current.sliderRef.addEventListener("mousemove", () => {
+        if (time.current) {
+          clearTimeout(time.current);
         }
-        if (bottomRef.current){
-          bottomRef.current.sliderRef.style.opacity = "1"
+        if (bottomRef.current) {
+          bottomRef.current.sliderRef.style.opacity = "1";
         }
-      })
+      });
       //移除时
-      bottomRef.current.sliderRef.addEventListener("mouseleave",()=>{
-        time.current = setTimeout(()=>{
-          if (bottomRef.current){
-            bottomRef.current.sliderRef.style.opacity = "0"
+      bottomRef.current.sliderRef.addEventListener("mouseleave", () => {
+        time.current = setTimeout(() => {
+          if (bottomRef.current) {
+            bottomRef.current.sliderRef.style.opacity = "0";
           }
-        },4000)
-      })
-    }else{
+        }, 4000);
+      });
+    } else {
       //移除所有监听
-      if (playerBoxRef.current){
-        playerBoxRef.current.removeEventListener("mousemove",()=>{})
+      if (playerBoxRef.current) {
+        playerBoxRef.current.removeEventListener("mousemove", () => {});
       }
-      if (bottomRef.current){
-        bottomRef.current.sliderRef.removeEventListener("mousemove",()=>{})
-        bottomRef.current.sliderRef.removeEventListener("mouseleave",()=>{})
-      }
-    }
-    return ()=>{
-      if (playerBoxRef.current){
-        playerBoxRef.current.removeEventListener("mousemove",()=>{})
-      }
-      if (bottomRef.current){
-        bottomRef.current.sliderRef.removeEventListener("mousemove",()=>{})
-        bottomRef.current.sliderRef.removeEventListener("mouseleave",()=>{})
+      if (bottomRef.current) {
+        bottomRef.current.sliderRef.removeEventListener("mousemove", () => {});
+        bottomRef.current.sliderRef.removeEventListener("mouseleave", () => {});
       }
     }
-  },[isFull,bottomRef,playerBoxRef])
+    return () => {
+      if (playerBoxRef.current) {
+        playerBoxRef.current.removeEventListener("mousemove", () => {});
+      }
+      if (bottomRef.current) {
+        bottomRef.current.sliderRef.removeEventListener("mousemove", () => {});
+        bottomRef.current.sliderRef.removeEventListener("mouseleave", () => {});
+      }
+    };
+  }, [isFull, bottomRef, playerBoxRef]);
 
   const timer = useRef<number | null>(null);
   //监听设置底部状态栏的显示
@@ -162,15 +156,15 @@ export default function Video({ videoData }: { videoData: videoType }) {
         }, 4000);
       });
     }
-    return ()=>{
-      if (playerBoxRef.current){
-        playerBoxRef.current.removeEventListener("mousemove",()=>{})
+    return () => {
+      if (playerBoxRef.current) {
+        playerBoxRef.current.removeEventListener("mousemove", () => {});
       }
-      if (bottomRef.current){
-        bottomRef.current.boxRef.removeEventListener("mousemove",()=>{})
-        bottomRef.current.boxRef.removeEventListener("mouseleave",()=>{})
+      if (bottomRef.current) {
+        bottomRef.current.boxRef.removeEventListener("mousemove", () => {});
+        bottomRef.current.boxRef.removeEventListener("mouseleave", () => {});
       }
-    }
+    };
   }, [playerBoxRef, bottomRef]);
   return (
     //设置allBox类和.dplayer-controller类

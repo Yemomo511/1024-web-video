@@ -166,9 +166,7 @@ export default function Recommend() {
       <div className={css.videoContentBox} ref={videoBoxRef}>
         <div className={css.transBox}>
           {transition((style, item) => {
-            console.log("error haed");
             const Page = pages[item];
-            console.log("error after")
             return <Page style={style}></Page>;
           })}
         </div>

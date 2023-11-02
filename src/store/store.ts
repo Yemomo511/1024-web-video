@@ -1,10 +1,5 @@
-import { create } from "zustand";
 import { stateFactory } from "./factory";
 
-interface fullScreenType {
-  isFull: boolean;
-  setIsFull: (isFull: boolean) => void;
-}
 export const useFullScreenStore = stateFactory(
   {
     isFull: false,
@@ -19,6 +14,7 @@ export const useVideoIndexStore = stateFactory(
   },
   (set) => ({
     setIndex: (index: number) => {
+      //@ts-ignore
       set((state) => {
         state.index = index;
       });
