@@ -1,4 +1,4 @@
-import React, { lazy, ReactNode, Suspense } from "react";
+import { lazy, ReactNode, Suspense } from "react";
 import type { RouteObject } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
@@ -12,7 +12,7 @@ const MyHome = lazy(() => import("~pages/MyHome/MyHome"));
 const withLoading = (component: ReactNode): ReactNode => {
   return <Suspense fallback={<div>loading</div>}>{component}</Suspense>;
 };
-
+console.log("hello")
 export const route: RouteObject[] = [
   {
     path: "/",

@@ -13,6 +13,7 @@ import { Outlet } from "react-router-dom";
 interface MyProps extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;
 }
+console.log("home page")
 const Home: FC<MyProps> = function Home() {
   return (
     <div className={css.box}>

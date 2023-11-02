@@ -4,7 +4,6 @@ import { useRoutes } from "react-router-dom";
 import { ConfigProvider, Modal } from "antd";
 import PassVideo from "~components/PassVideo/PassVideo";
 import { useModelStore, modelType } from "./store/store";
-import { ReactQueryDevtools } from "react-query/devtools";
 import { useEffect } from "react";
 import { QueryClientProvider,QueryClient } from "react-query";
 function App() {
@@ -14,6 +13,7 @@ function App() {
     console.log("change");
   }, [model]);
   const client = new QueryClient()
+  console.log("queryLient");
   return (
     <QueryClientProvider client={client}>
       <div className="css-all-box">

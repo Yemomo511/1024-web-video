@@ -66,7 +66,10 @@ export default function Video({ videoData }: { videoData: videoType }) {
       if (isFull) {
         component.requestFullscreen();
       } else {
-        document.exitFullscreen();
+        //判断当前是否全屏
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        }
       }
     }
   }, [isFull]);

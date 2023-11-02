@@ -4,7 +4,6 @@ import { stringWithTime } from '~/utils/api/common'
 import DPlayer from 'dplayer'
 import "./index.css"
 function Slider({
-    isPause,
     changeTime,
     playerRef,
     currentTime,
@@ -59,4 +58,4 @@ function Slider({
         ></SliderAntd> 
   )
 }
-export default React.forwardRef(Slider)
+export default Slider
