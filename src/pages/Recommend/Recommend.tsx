@@ -82,7 +82,9 @@ const pages: ((
     );
   };
 });
+
 export default function Recommend() {
+  console.log("recommend page")
   const videoBoxRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState<number>(0);
   const [direct, setDirect] = useState(true);
@@ -164,7 +166,9 @@ export default function Recommend() {
       <div className={css.videoContentBox} ref={videoBoxRef}>
         <div className={css.transBox}>
           {transition((style, item) => {
+            console.log("error haed");
             const Page = pages[item];
+            console.log("error after")
             return <Page style={style}></Page>;
           })}
         </div>
