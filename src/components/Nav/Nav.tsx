@@ -9,7 +9,7 @@ export default function Nav() {
     {
       title: "首页",
       icon: imageUrl.nav.index,
-      path:'/home',
+      path:'/home/recommend',
     },
     {
       title: "我的",

@@ -1,16 +1,16 @@
 import { lazy, ReactNode, Suspense } from "react";
 import type { RouteObject } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import RecommendComponent from "~/pages/Recommend/Recommend";
+
 const Home = lazy(() => import("~/pages/Home"));
 const Hot = lazy(() => import("~/pages/Hot"));
 const Game = lazy(() => import("~/pages/Game"));
-// const Recommend = lazy(() => import("~/pages/Recommend/Recommend"));
+const RecommendComponent = lazy(() => import("~/pages/Recommend/Recommend"));
 const MyHome = lazy(() => import("~pages/MyHome/MyHome"));
 const withLoading = (component: ReactNode): ReactNode => {
   return <Suspense fallback={<div>loading</div>}>{component}</Suspense>;
 };
-console.log("hello")
+
 export const route: RouteObject[] = [
   {
     path: "/",
@@ -21,27 +21,27 @@ export const route: RouteObject[] = [
     element: withLoading(<Home />),
     children: [
       {
-        path: "index",
-        element: <RecommendComponent />,
+        path: '/home',
+        element: <Navigate to="/home/recommend" />
       },
       {
-        path: "my-home/:id",
+        path: "/home/recommend",
+        element: withLoading(<RecommendComponent />,)
+      },
+      {
+        path: "/home/my-home/:id",
         element: withLoading(<MyHome />),
       },
       {
-        path: "hot",
+        path: "/home/hot",
         element: withLoading(<Hot />),
       },
       {
-        path: "game",
+        path: "/home/game",
         element: withLoading(<Game />),
-      },
-      {
-        path: "",
-        element: <RecommendComponent />,
-      },
+      }
     ],
   },
 
- 
+
 ];
