@@ -9,8 +9,8 @@ class LoginApi{
         login: "/user/login"
     }
     //avatar没设置后端定义吧
-    fetchRegister = async ({avatar="",...data}:registerDataType)=>{
-        const res = await this.http.post<registerResponse>(this.url.register, {...data,avatar})
+    fetchRegister = async ({Avatar="",...data}:registerDataType)=>{
+        const res = await this.http.post<registerResponse>(this.url.register, {...data,Avatar})
         return res
     }
     fetchLogin = async (data:loginDataType)=>{
