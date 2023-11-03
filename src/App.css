@@ -22,7 +22,7 @@
 }
 .css-my-video-tab > .ant-tabs-content-holder{
     overflow: scroll;
-    scrollbar-width: none; 
+    scrollbar-width: none;
     -ms-overflow-style: none;
 }
 .css-my-video-tab > .ant-tabs-content-holder::-webkit-scrollbar {
@@ -33,4 +33,11 @@
     position: absolute;
     bottom: 100px !important;
     left: 20px
+}
+
+.active > div > .NavIcon {
+    opacity: 1!important;
+}
+.active > div > .text {
+    color: white!important;
 }

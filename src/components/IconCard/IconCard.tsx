@@ -24,11 +24,6 @@ const IconCard: FC<MyProps> = memo((props) => {
   const boxRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<HTMLDivElement>(null);
-  const { pathname } = useLocation()
-  useEffect(() => {
-    // 待抽取整体布局 根据 pathname 处理 Nav 高亮
-    console.log(pathname);
-  }, [pathname]);
   useEffect(() => {
     //开启监听
     if (boxRef.current) {
@@ -36,7 +31,6 @@ const IconCard: FC<MyProps> = memo((props) => {
       boxRef.current.addEventListener("mouseenter", () => {
         if (textRef.current) {
           textRef.current.style.color = "white";
-
         }
         if (iconRef.current){
             iconRef.current.style.opacity = "1"
@@ -62,13 +56,15 @@ const IconCard: FC<MyProps> = memo((props) => {
     >
       <div ref={iconRef} style={{
         opacity:0.4
-      }}>
+      }}
+      className="NavIcon"
+      >
         <Icon IconStyle={iconStyle} src={icon}></Icon>
       </div>
 
       <div
       style={textStyle}
-      className={css.text} ref={textRef}>
+      className={`${css.text} text`} ref={textRef}>
         {title}
       </div>
     </div>
