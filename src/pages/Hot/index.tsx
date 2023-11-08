@@ -4,7 +4,6 @@ import Recommend from "~pages/Recommend/Recommend.tsx";
 import {videoType} from "~types/type";
 import {nanoid} from "nanoid";
 import monkey from "~assets/poster/Monkey.jpg";
-import cuteCat from "~assets/video/cute-cat.mp4.mp4";
 import music from "~assets/video/music-hot.mp4";
 import spiderMan from '~assets/video/spide-man.mp4'
 
